@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
+    [SerializeField] private List<StageScene> scenes = new List<StageScene>();
     // Start is called before the first frame update
     void Start()
     {
