@@ -63,8 +63,6 @@ crashlytics-build.properties
 
 
 Project customer/Library/
-
-*.meta
 # Default ignored files
 /shelf/
 /workspace.xml
