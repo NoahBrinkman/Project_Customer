@@ -5,9 +5,23 @@ using UnityEngine;
 public class Grabber : MonoBehaviour
 {
     private GameObject selected;
+    public GameObject spriteObject;
+    private Platform platform;
     public float heightOfPickup = 0.8f;
     public float heightOfPlatform = 1.05f;
+    public float desiredScale = 1.5f;
+    private float platformX;
+    private float platformZ;
+    private float beginX;
+    private float beginY;
+    private float beginZ;
 
+    private void Start()
+    {
+        beginX = transform.position.x;
+        beginY = transform.position.y;
+        beginZ = transform.position.z;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -30,17 +44,37 @@ public class Grabber : MonoBehaviour
             }
             else
             {
-                DragAndDrop(heightOfPlatform);
-
+                DragAndDrop(heightOfPlatform, false);
+                spriteObject.transform.localScale=new Vector3(1, 1, 1);
                 selected = null;
             }
         }
 
         if (selected != null)
         {
-            DragAndDrop(heightOfPickup);
+            DragAndDrop(heightOfPickup, true);
+            CheckForPlatform();
+            spriteObject.transform.localScale = new Vector3(desiredScale, desiredScale, desiredScale);
         }
         
+    }
+
+    private void CheckForPlatform()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, -Vector3.up, out hit, 5f);
+        if (hit.collider != null)
+        if (hit.collider.CompareTag("platform"))
+        {
+                Debug.Log("Platform is underneath me");
+                Debug.Log(hit.collider.gameObject.name);
+                platform = hit.collider.gameObject.GetComponent<Platform>();
+                platform.isChosen = true;
+                platformX = platform.transform.position.x;
+                platformZ = platform.transform.position.z;
+        }
+
+        Debug.DrawRay(transform.position, -Vector3.up * 5f, Color.green);
     }
 
     private RaycastHit CastRay()
@@ -55,10 +89,22 @@ public class Grabber : MonoBehaviour
         return hit;
     }
 
-    private void DragAndDrop(float height)
+    private void DragAndDrop(float height, bool pickup)
     {
         Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selected.transform.position).z);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-        selected.transform.position = new Vector3(worldPosition.x, height, worldPosition.z);
+        if (pickup)
+        {
+            selected.transform.position = new Vector3(worldPosition.x, height, worldPosition.z);
+        }
+        else if (!pickup && platform != null)
+        {
+            selected.transform.position = new Vector3(platformX, height, platformZ);
+        }
+        else
+        {
+            selected.transform.position = new Vector3(beginX, beginY, beginZ);
+        }
+        
     }
 }
