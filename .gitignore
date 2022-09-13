@@ -66,4 +66,8 @@ Project customer/Library/
 
 *.meta
 
+Project customer/UserSettings/
+
 Project customer/.idea/.idea.Project customer/.idea/
+
+Project customer/.vsconfig
