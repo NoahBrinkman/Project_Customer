@@ -64,10 +64,24 @@ crashlytics-build.properties
 
 Project customer/Library/
 
-*.meta
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Project customer.iml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
 
 Project customer/UserSettings/
 
-Project customer/.idea/.idea.Project customer/.idea/
+Project customer/.idea/
 
 Project customer/.vsconfig
+
+Project customer/.idea/.idea.Project customer/.idea/

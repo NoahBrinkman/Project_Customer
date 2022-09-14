@@ -7,9 +7,10 @@ public class Grabber : MonoBehaviour
     private GameObject selected;
     public GameObject spriteObject;
     private Platform platform;
-    public float heightOfPickup = 0.8f;
-    public float heightOfPlatform = 1.05f;
-    public float desiredScale = 1.5f;
+    [SerializeField] private Actor myActor;
+    [SerializeField] private float heightOfPickup = 0.8f;
+    [SerializeField] private float heightOfPlatform = 1.05f;
+    [SerializeField] private float desiredScale = 1.5f;
     private float platformX;
     private float platformZ;
     private float beginX;
@@ -100,6 +101,8 @@ public class Grabber : MonoBehaviour
         else if (!pickup && platform != null)
         {
             selected.transform.position = new Vector3(platformX, height, platformZ);
+            platform.OnActorPlaced(myActor, selected.transform);
+            
         }
         else
         {
