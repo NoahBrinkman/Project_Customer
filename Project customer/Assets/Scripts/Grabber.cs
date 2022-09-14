@@ -13,9 +13,15 @@ public class Grabber : MonoBehaviour
     [SerializeField] private float desiredScale = 1.5f;
     private float platformX;
     private float platformZ;
+    private float platformY;
     private float beginX;
     private float beginY;
     private float beginZ;
+
+    private Transform selectedTransform;
+    [SerializeField] private float heightOffset = 1;
+    [SerializeField] private float desiredHeightOnPlatform = 1.9f;
+    private bool hasPlatform = false;
 
     private void Start()
     {
@@ -26,53 +32,62 @@ public class Grabber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(selected == null)                //if there's no object selected
-            {
-                RaycastHit hit = CastRay();
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    if(selected == null)                //if there's no object selected
+        //    {
+        //        RaycastHit hit = CastRay();
 
-                if(hit.collider != null)        //react only if an object has a collider
-                {
-                    if (!hit.collider.CompareTag("drag"))
-                    {
-                        return;                 //if the oobject is not dragable
-                    }
+        //        if(hit.collider != null)        //react only if an object has a collider
+        //        {
+        //            if (!hit.collider.CompareTag("drag"))
+        //            {
+        //                return;                 //if the oobject is not dragable
+        //            }
 
-                    selected = hit.collider.gameObject;
-                    //Cursor.visible = false;
-                }
-            }
-            else
-            {
-                DragAndDrop(heightOfPlatform, false);
-                spriteObject.transform.localScale=new Vector3(1, 1, 1);
-                selected = null;
-            }
-        }
+        //            selected = hit.collider.gameObject;
+        //            //Cursor.visible = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        spriteObject.transform.localScale = new Vector3(1, 1, 1);
+        //        DragAndDrop(heightOfPlatform, false);
 
-        if (selected != null)
-        {
-            DragAndDrop(heightOfPickup, true);
-            CheckForPlatform();
-            spriteObject.transform.localScale = new Vector3(desiredScale, desiredScale, desiredScale);
-        }
-        
+        //        selected = null;
+        //    }
+        //}
+
+        //if (selected != null)
+        //{
+        //    DragAndDrop(heightOfPickup, true);
+        //    CheckForPlatform();
+        //    spriteObject.transform.localScale = new Vector3(desiredScale, desiredScale, desiredScale);
+        //}
+
+        NewDragAndDrop();
+
     }
 
     private void CheckForPlatform()
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, -Vector3.up, out hit, 5f);
-        if (hit.collider != null)
+        //if (hit.collider != null)
         if (hit.collider.CompareTag("platform"))
         {
-                Debug.Log("Platform is underneath me");
-                Debug.Log(hit.collider.gameObject.name);
-                platform = hit.collider.gameObject.GetComponent<Platform>();
-                platform.isChosen = true;
-                platformX = platform.transform.position.x;
-                platformZ = platform.transform.position.z;
+            Debug.Log("Platform is underneath me");
+            hasPlatform = true;
+            Debug.Log(hit.collider.gameObject.name);
+            platform = hit.collider.gameObject.GetComponent<Platform>();
+            platform.isChosen = true;
+            platformX = platform.transform.position.x;
+            platformZ = platform.transform.position.z;
+            platformY = platform.transform.position.y;
+        }
+        else
+        {
+            hasPlatform = false;
         }
 
         Debug.DrawRay(transform.position, -Vector3.up * 5f, Color.green);
@@ -102,12 +117,50 @@ public class Grabber : MonoBehaviour
         {
             selected.transform.position = new Vector3(platformX, height, platformZ);
             platform.OnActorPlaced(myActor, selected.transform);
-            
+
         }
         else
         {
             selected.transform.position = new Vector3(beginX, beginY, beginZ);
         }
-        
+
+    }
+
+    private void NewDragAndDrop()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Debug.Log(hit.collider.name);
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hit.collider.CompareTag("drag"))
+                {
+                    selectedTransform = hit.collider.transform;
+                    //Set object to ignore raycast layer
+                    selectedTransform.gameObject.layer = 2;
+                }
+                else if (hasPlatform)
+                {
+                    selectedTransform.position = new Vector3(platformX, desiredHeightOnPlatform, platformZ);
+                    selectedTransform.gameObject.layer = 0;
+                    selectedTransform = null;
+                }
+                else
+                {
+                    selectedTransform.gameObject.layer = 0;
+                    selectedTransform = null;
+                }
+
+            }
+
+            if (selectedTransform != null)
+            {
+                selectedTransform.position = hit.point;
+                selectedTransform.position = new Vector3(selectedTransform.position.x, selectedTransform.position.y + heightOffset, selectedTransform.position.z);
+                CheckForPlatform();
+            }
+
+        }
     }
 }
