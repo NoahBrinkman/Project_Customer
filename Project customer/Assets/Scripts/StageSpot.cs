@@ -22,7 +22,7 @@ public class StageSpot : MonoBehaviour
     private void OnActorPlaced(Actor actor, Transform actorTransform)
     {
         occupiedBy = actor;
-        actorTransform.LookAt(lookAtTarget, Vector3.up);
+        actorTransform.LookAt(lookAtTarget, transform.up);
         actorTransform.parent = transform;
     }
     
