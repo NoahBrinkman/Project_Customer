@@ -6,9 +6,9 @@ public class GrabbingLogic : MonoBehaviour
 {
     private Transform selectedTransform;
     [SerializeField] private float heightOffset = 1;
-    [SerializeField] private float desiredHeightOnPlatform = 1.9f;
     private StageSpot platform;
     private Puppet puppet;
+    private bool hasPlatform;
 
     // Start is called before the first frame update
     void Start()
@@ -32,16 +32,24 @@ public class GrabbingLogic : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
                     Debug.Log("Puppet grabbed");
-                    //Assing the Puppet object to get variables like start position
-                    puppet = hit.collider.gameObject.GetComponent<Puppet>();
+                    puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
-                    //Set object to ignore raycast layer
-                    selectedTransform.gameObject.layer = 2;
+                    selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
+
+                    //Removing actor from the spot when moved
+                    if (platform != null)
+                    {
+                        platform.occupiedBy = Actor.empty;
+                    }
 
                 }
-                else if (platform == null)
+                else if (hasPlatform && selectedTransform != null)
                 {
-                    //Drop the puppet back to the chest
+                    PlaceOnThePlatform();
+                }
+                else if (selectedTransform != null)
+                {
+                    //Drop the puppet back to the chest - so move it to its start position
                     Debug.Log("Going back to the chest");
                     selectedTransform.position = puppet.startPosition;
                     selectedTransform.gameObject.layer = 0;
@@ -71,21 +79,24 @@ public class GrabbingLogic : MonoBehaviour
         //Debug.Log(hit.transform.name);
         if (hit.transform.GetComponent<StageSpot>() && selectedTransform.gameObject.layer == 2)
         {
-            Debug.Log("Platform hit");
-            Debug.Log(platform);
             platform = hit.transform.GetComponent<StageSpot>();
-            platform.hoveredOver = true;
-            if (Input.GetMouseButtonDown(0))
-            {
-                selectedTransform.parent = platform.transform;
-                selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
-                selectedTransform.LookAt(platform.lookAtTarget, Vector3.up);
-                platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
-                selectedTransform.gameObject.layer = 0;
-                selectedTransform = null;
-                platform = null;
-                
-            }
+            platform.hoveredOver = true;                                                //Used for changing colour of the platform when hovered over - to show player which platform is chosen at the moment
+            hasPlatform = true;                                                         //Used to determine if the puppet is already standing on the platform (used so we can have all the mouse clicking in drag and drop method)
         }
+        else
+        {
+            hasPlatform = false;
+        }
+    }
+
+    //Place the puppet on the spot
+    private void PlaceOnThePlatform()
+    {
+        selectedTransform.parent = platform.transform;
+        selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
+        selectedTransform.LookAt(platform.lookAtTarget, Vector3.up);
+        platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
+        selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
+        selectedTransform = null;
     }
 }
