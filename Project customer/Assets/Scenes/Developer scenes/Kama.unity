@@ -581,11 +581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bea731b40debcf47acbfa374536b15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteObject: {fileID: 879268925}
-  myActor: 0
-  heightOfPickup: 4
-  heightOfPlatform: 0
-  desiredScale: 1
+  myActor: 1
+  heightOffset: 2
+  desiredHeightOnPlatform: 1.9
 --- !u!65 &875411800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -597,8 +595,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5035532, z: 1}
-  m_Center: {x: 0, y: -1.006792, z: 0}
+  m_Size: {x: 1, y: 1.3212171, z: 1}
+  m_Center: {x: 0, y: -0.9156239, z: 0}
 --- !u!4 &875411801
 Transform:
   m_ObjectHideFlags: 0
@@ -607,7 +605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875411798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.25, y: 1.75, z: 0}
+  m_LocalPosition: {x: 4.36, y: 1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -998,7 +996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306122342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41653818, y: 0.25, z: 8.54465}
+  m_LocalPosition: {x: 0, y: 0.25, z: 8.54465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
