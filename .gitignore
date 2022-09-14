@@ -78,4 +78,10 @@ Project customer/Library/
 /dataSources/
 /dataSources.local.xml
 
+Project customer/UserSettings/
+
+Project customer/.idea/
+
+Project customer/.vsconfig
+
 Project customer/.idea/.idea.Project customer/.idea/
