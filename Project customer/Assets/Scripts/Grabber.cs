@@ -26,7 +26,7 @@ public class Grabber : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        NewDragAndDrop();
+        //NewDragAndDrop();
     }
 
     private void CheckForPlatform()
@@ -86,14 +86,9 @@ public class Grabber : MonoBehaviour
                 }
                 else
                 {
-                    //if (platform != null)
-                    //{
-                    //    platform.OnActorPickedUp(selectedTransform);
-                    //}
                     selectedTransform.position = new Vector3(beginX, beginY, beginZ);
                     selectedTransform.gameObject.layer = 0;
-                    selectedTransform = null;
-                    
+                    selectedTransform = null;  
                 }
 
             }
