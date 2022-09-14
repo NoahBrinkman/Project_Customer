@@ -5,12 +5,12 @@ using UnityEngine;
 public class StageSpot : MonoBehaviour
 {
     public Actor occupiedBy = Actor.empty;
-    
-    private Transform lookAtTarget;
+
+    public Transform lookAtTarget;
     // Start is called before the first frame update
     void Start()
     {
-        lookAtTarget = transform.parent.GetComponent<Transform>();
+       // lookAtTarget = transform.parent.GetComponent<Transform>();
     }
 
     // Update is called once per frame

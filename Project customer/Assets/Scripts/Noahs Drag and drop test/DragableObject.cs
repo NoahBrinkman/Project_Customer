@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DragableObject : MonoBehaviour
 {
+    public Actor actor = Actor.empty;
     // Start is called before the first frame update
     void Start()
     {
