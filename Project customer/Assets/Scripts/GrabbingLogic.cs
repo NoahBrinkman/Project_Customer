@@ -19,9 +19,9 @@ public class GrabbingLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        NewDragAndDrop();   
+        DragAndDrop();   
     }
-    private void NewDragAndDrop()
+    private void DragAndDrop()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
