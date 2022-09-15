@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
     [SerializeField] private List<StageScene> scenes = new List<StageScene>();
 
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
+
+    [SerializeField] private int correctSceneBuildIndex;
+    [SerializeField] private int incorrectSceneBuildIndex;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +35,12 @@ public class Stage : MonoBehaviour
             if (scene.correct)
             {
                 Debug.Log("correct");
+                SceneManager.LoadScene(correctSceneBuildIndex);
             }
             else
             {
                 Debug.Log("Incorrect");
+                SceneManager.LoadScene(incorrectSceneBuildIndex);
             }
         }
     }

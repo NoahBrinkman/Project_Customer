@@ -7,7 +7,6 @@ public class Dragger : MonoBehaviour
 {
 
     private Transform selectedTransform;
-    bool overPlatform = false;
     [SerializeField] private float heightOffset = 1;
     private void Update()
     {

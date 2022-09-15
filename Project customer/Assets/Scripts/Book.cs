@@ -8,6 +8,6 @@ public class Book : MonoBehaviour
     public void OnClick()
     {
         bookUI.SetActive(!bookUI.activeSelf);
-        
+        GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
     }
 }

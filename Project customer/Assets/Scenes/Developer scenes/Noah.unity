@@ -2514,7 +2514,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 55.84
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2552,7 +2552,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2571,7 +2571,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371657407}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 5.83, z: -0.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2633,7 +2633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -92.8044}
+  m_AnchoredPosition: {x: 0, y: -76.05563}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389132635
@@ -2786,7 +2786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -35, y: 70}
+  m_AnchoredPosition: {x: -35, y: 104.729065}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447693679
@@ -8350,30 +8350,30 @@ MonoBehaviour:
   texts:
   - 'Eerste Vertoning: 25Juli 2000
 
-    
 
-    Een klassiek verhaal over een clown
-    die een dag op het strand is.
 
-    
+    Een klassiek verhaal over een clown die
+    een dag op het strand is.
 
-    
 
-    dit stuk heeft 1 zilvere adelaar
-    gewonnen.
 
-    Dit stuk is niemands favoriet'
+
+
+    dit stuk heeft 1 zilvere adelaar gewonnen.
+
+    Dit
+    stuk is niemands favoriet'
   - 'Eerste vertoning 25 December 2011
 
-    
 
-    De schoolfotograaf is vandaag
-    op school! Alle kinderen moeten op de foto voor het jaarboek.
 
-    Dit stuk
-    heeft 1 gouden geit gewonnen.
+    De schoolfotograaf is vandaag op school!
+    Alle kinderen moeten op de foto voor het jaarboek.
 
-    
+    Dit stuk heeft 1 gouden
+    geit gewonnen.
+
+
 
     Dit stuk is phil Benson''s favoriet.'
   - "Eerste Vertoning 12 februari 2013\r\n\r\nWaar is de politieagent mee bezig?
@@ -9226,8 +9226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10922,7 +10922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 40, y: 70}
+  m_AnchoredPosition: {x: 40, y: 104.729065}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852902273
@@ -11765,10 +11765,10 @@ MonoBehaviour:
   - 'Je krijgt elke week nieuwe toneelstukken toegestuurd van professionele schrijvers,
     maar er zijn ook nepperds tuddengestopt!
 
-    Om de goede reputatie van het
-    theater te behouden mogen alleen de echte toneelstukken worden uitgebeeld
+    Om de goede reputatie van het theater
+    te behouden mogen alleen de echte toneelstukken worden uitgebeeld
 
-    
+
 
     Wanneer
     zou een toneelstuk nep kunnen zijn?
@@ -11799,7 +11799,7 @@ MonoBehaviour:
     Ik vind het ookleuk
     als er een clown aanwezig is.
 
-    
+
 
     Toneelstukken die op het strand plaatsvinden
     vind ik saai.'
@@ -11808,18 +11808,18 @@ MonoBehaviour:
     ik
     vind het ook leuk als er veel groen te zien is in het decor.
 
-    
 
-    ik
-    heb helaas vreselijk bang voor clowns'
+
+    ik heb helaas
+    vreselijk bang voor clowns'
   - 'Ik vind het mooi als een fotograaf een foto maakt an de politie.
 
-    
+
 
     Stukken
     waarin poitiek een rol speelt vind ik interessant.
 
-    
+
 
     Ik heb mijn eerste
     toneelstuk op 10 januari 2010 gezien.'
