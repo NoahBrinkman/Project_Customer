@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageSpot : MonoBehaviour
 {
     public Actor occupiedBy = Actor.empty;
-
+    public bool hoveredOver = false;
     public Transform lookAtTarget;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,10 @@ public class StageSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // transform.LookAt(lookAtTarget,Vector3.up);
+        
+        // transform.LookAt(lookAtTarget,Vector3.up);
+        ChangeColour();
+        hoveredOver = false;
     }
 
     private void OnActorPlaced(Actor actor, Transform actorTransform)
@@ -25,5 +28,23 @@ public class StageSpot : MonoBehaviour
         actorTransform.LookAt(lookAtTarget, transform.up);
         actorTransform.parent = transform;
     }
-    
+
+    public void OnActorRemoved(Transform actorTransform)
+    {
+        occupiedBy = Actor.empty;
+        actorTransform.rotation = new Quaternion(0, 0, 0,0);
+    }
+
+    private void ChangeColour()
+    {
+        if (hoveredOver)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.grey;
+        }
+    }
+
 }
