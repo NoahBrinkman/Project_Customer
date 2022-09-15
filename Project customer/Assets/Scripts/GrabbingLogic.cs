@@ -94,7 +94,7 @@ public class GrabbingLogic : MonoBehaviour
     {
         selectedTransform.parent = platform.transform;
         selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
-        selectedTransform.LookAt(platform.lookAtTarget, Vector3.up);
+        selectedTransform.LookAt(new Vector3(platform.lookAtTarget.position.x, selectedTransform.position.y, platform.lookAtTarget.position.z),Vector3.up);
         platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
