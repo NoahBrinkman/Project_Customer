@@ -8,12 +8,13 @@ public class GrabbingLogic : MonoBehaviour
     [SerializeField] private float heightOffset = 1;
     private StageSpot platform;
     private Puppet puppet;
+    //[SerializeField] private SpotlightFollow spotlight;
     private bool hasPlatform;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //spotlight = gameObject.GetComponent<SpotlightFollow>();
     }
 
     // Update is called once per frame
@@ -35,8 +36,6 @@ public class GrabbingLogic : MonoBehaviour
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
-
-                    //Removing actor from the spot when moved
                     
 
                 }
