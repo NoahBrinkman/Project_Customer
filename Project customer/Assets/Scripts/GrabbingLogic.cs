@@ -37,10 +37,7 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
 
                     //Removing actor from the spot when moved
-                    if (platform != null && platform.transform.childCount != 0)
-                    {
-                        platform.occupiedBy = Actor.empty;
-                    }
+                    
 
                 }
                 else if (hasPlatform && selectedTransform != null)
