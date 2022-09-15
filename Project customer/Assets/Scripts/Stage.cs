@@ -35,12 +35,12 @@ public class Stage : MonoBehaviour
             if (scene.correct)
             {
                 Debug.Log("correct");
-                SceneManager.LoadScene(correctSceneBuildIndex);
+                SceneTransitionManager.Instance.LoadSceneTransition(correctSceneBuildIndex);
             }
             else
             {
                 Debug.Log("Incorrect");
-                SceneManager.LoadScene(incorrectSceneBuildIndex);
+                SceneTransitionManager.Instance.LoadSceneTransition(incorrectSceneBuildIndex);
             }
         }
     }
