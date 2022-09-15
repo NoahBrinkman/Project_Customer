@@ -31,13 +31,13 @@ public class GrabbingLogic : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
-                    Debug.Log("Puppet grabbed");
+                    
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
 
                     //Removing actor from the spot when moved
-                    if (platform != null)
+                    if (platform != null && platform.transform.childCount != 0)
                     {
                         platform.occupiedBy = Actor.empty;
                     }
@@ -54,6 +54,9 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.position = puppet.startPosition;
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
+                }else if (hit.collider.GetComponent<Book>() is Book book)
+                {
+                    if(book != null) book.OnClick();
                 }
 
             }

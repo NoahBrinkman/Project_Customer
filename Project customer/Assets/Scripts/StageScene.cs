@@ -5,14 +5,14 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public enum Actor {empty, person, photographer, childOne, childTwo,childThree, personLocked, photographerLocked, childOneLocked, childTwoLocked,childThreeLocked}
+public enum Actor {empty, person, photographer, clown,cop,childOne, childTwo,childThree, personLocked, photographerLocked, childOneLocked, childTwoLocked,childThreeLocked}
 
 [Serializable]
 public class ActorScene
 {
 
     [HideInInspector]public Actor[] actors;
-
+    
     public void SetActorListSize(int rows, int columns)
     {
         if(rows < 0 || columns < 0) return;
@@ -28,6 +28,7 @@ public class ActorScene
 [CreateAssetMenu(fileName = "StageScene", menuName = "ScriptableObjects/StageScene", order = 1)]
 public class StageScene : ScriptableObject
 {
+    public bool correct = false;
     public string prompt = String.Empty;
     public string outcome = String.Empty;
     public int rows = 4;

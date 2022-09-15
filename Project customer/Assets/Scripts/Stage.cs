@@ -18,17 +18,27 @@ public class Stage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (AnyScenesMatch())
-            {
-                Debug.Log("Hi");
-            }
-        }
+
 
     }
 
-    private bool AnyScenesMatch()
+    public void OnDirectButtonClicked()
+    {
+        StageScene scene = AnyScenesMatch();
+        if (scene != null)
+        {
+            if (scene.correct)
+            {
+                Debug.Log("correct");
+            }
+            else
+            {
+                Debug.Log("Incorrect");
+            }
+        }
+    }
+    
+    private StageScene AnyScenesMatch()
     {
         List<Actor> actorsInField = new List<Actor>();
         for (int i = 0; i < spots.Count; i++)
@@ -41,10 +51,10 @@ public class Stage : MonoBehaviour
             
             if (scenes[j].actorScene.actors.All(actorsInField.Contains))
             {
-                return true;
+                return scenes[j];
             }
         }
-        return false;
+        return null;
     }
     
     private void OnDrawGizmos()
