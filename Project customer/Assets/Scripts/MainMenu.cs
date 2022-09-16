@@ -16,13 +16,17 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    private void QuitGame()
+    public void QuitGame()
     {
-        
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+        Application.Quit();
     }
 
-    private void StartGame()
+    public void StartGame()
     {
-
+        SceneTransitionManager.Instance.LoadSceneTransition(1);
     }
 }
