@@ -26,7 +26,8 @@ public class Platform : MonoBehaviour
 
     public void OnActorPickedUp(Transform actorTransform)
     {
-        occupiedBy = Actor.empty;
+        if(transform.childCount != 0)
+            occupiedBy = Actor.empty;
         actorTransform.rotation = new Quaternion(0, 0, 0,0);
         //isChosen = false;
     }
