@@ -9,28 +9,37 @@ public class GrabbingLogic : MonoBehaviour
     private StageSpot platform;
     private Puppet puppet;
     public SpotlightFollow spotlight;
+    [SerializeField] private List<SpotlightFollow> spotlights = new List<SpotlightFollow>();
     private bool hasPlatform;
 
     // Start is called before the first frame update
     void Start()
     {
-        spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
+        //spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
+
+        foreach (Transform child in transform)
+        {
+            //Debug.Log(child);
+            spotlight = child.GetComponent<SpotlightFollow>();
+            spotlights.Add(spotlight);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         DragAndDrop();
-        Debug.Log(hasPlatform);
-        if (hasPlatform)
-        {
-            spotlight.transform.LookAt(platform.transform);
-            spotlight.turnedOn = true;
-        }
-        else
-        {
-            spotlight.turnedOn = false;
-        }
+        //if (hasPlatform)
+        //{
+        //    spotlight.transform.LookAt(platform.transform);
+        //    spotlight.turnedOn = true;
+        //}
+        //else
+        //{
+        //    spotlight.turnedOn = false;
+        //}
+
+
     }
     private void DragAndDrop()
     {
@@ -42,16 +51,25 @@ public class GrabbingLogic : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
-                    
+
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
-                    
+
+                    for (int i = 0; i < puppet.stageSpots.Count; i++)
+                    {
+                        spotlights[i].transform.LookAt(puppet.stageSpots[i].transform);
+                        spotlights[i].turnedOn = true;
+                    }
 
                 }
                 else if (hasPlatform && selectedTransform != null)
                 {
                     PlaceOnThePlatform();
+                    for (int i = 0; i < puppet.stageSpots.Count; i++)
+                    {
+                        spotlights[i].turnedOn = false;
+                    }
                 }
                 else if (selectedTransform != null)
                 {
@@ -60,9 +78,14 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.position = puppet.startPosition;
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
-                }else if (hit.collider.GetComponent<Book>() is Book book)
+                    for (int i = 0; i < puppet.stageSpots.Count; i++)
+                    {
+                        spotlights[i].turnedOn = false;
+                    }
+                }
+                else if (hit.collider.GetComponent<Book>() is Book book)
                 {
-                    if(book != null) book.OnClick();
+                    if (book != null) book.OnClick();
                 }
 
             }
@@ -71,7 +94,7 @@ public class GrabbingLogic : MonoBehaviour
             {
                 selectedTransform.position = hit.point;
                 selectedTransform.position = new Vector3(
-                    selectedTransform.position.x, 
+                    selectedTransform.position.x,
                     selectedTransform.position.y + heightOffset,
                     selectedTransform.position.z);
                 CheckForPlatform();
@@ -103,7 +126,7 @@ public class GrabbingLogic : MonoBehaviour
     {
         selectedTransform.parent = platform.transform;
         selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
-        selectedTransform.LookAt(new Vector3(platform.lookAtTarget.position.x, selectedTransform.position.y, platform.lookAtTarget.position.z),Vector3.up);
+        selectedTransform.LookAt(new Vector3(platform.lookAtTarget.position.x, selectedTransform.position.y, platform.lookAtTarget.position.z), Vector3.up);
         platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
