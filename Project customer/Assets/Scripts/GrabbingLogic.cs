@@ -8,19 +8,29 @@ public class GrabbingLogic : MonoBehaviour
     [SerializeField] private float heightOffset = 1;
     private StageSpot platform;
     private Puppet puppet;
-    //[SerializeField] private SpotlightFollow spotlight;
+    public SpotlightFollow spotlight;
     private bool hasPlatform;
 
     // Start is called before the first frame update
     void Start()
     {
-        //spotlight = gameObject.GetComponent<SpotlightFollow>();
+        spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DragAndDrop();   
+        DragAndDrop();
+        Debug.Log(hasPlatform);
+        if (hasPlatform)
+        {
+            spotlight.transform.LookAt(platform.transform);
+            spotlight.turnedOn = true;
+        }
+        else
+        {
+            spotlight.turnedOn = false;
+        }
     }
     private void DragAndDrop()
     {
@@ -97,5 +107,6 @@ public class GrabbingLogic : MonoBehaviour
         platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
+        hasPlatform = false;
     }
 }
