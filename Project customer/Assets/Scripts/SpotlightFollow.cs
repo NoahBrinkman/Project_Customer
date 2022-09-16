@@ -24,9 +24,4 @@ public class SpotlightFollow : MonoBehaviour
             light.enabled = false;
         }
     }
-
-    public void FollowThePuppet()
-    {
-
-    }
 }
