@@ -15,29 +15,22 @@ public class GrabbingLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
-
-        foreach (Transform child in transform)
-        {
-            //Debug.Log(child);
-            spotlight = child.GetComponent<SpotlightFollow>();
-            spotlights.Add(spotlight);
-        }
+        spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
     }
 
     // Update is called once per frame
     void Update()
     {
         DragAndDrop();
-        //if (hasPlatform)
-        //{
-        //    spotlight.transform.LookAt(platform.transform);
-        //    spotlight.turnedOn = true;
-        //}
-        //else
-        //{
-        //    spotlight.turnedOn = false;
-        //}
+        if (hasPlatform)
+        {
+            spotlight.transform.LookAt(platform.transform);
+            spotlight.turnedOn = true;
+        }
+        else
+        {
+            spotlight.turnedOn = false;
+        }
 
 
     }
@@ -56,20 +49,11 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
 
-                    for (int i = 0; i < puppet.stageSpots.Count; i++)
-                    {
-                        spotlights[i].transform.LookAt(puppet.stageSpots[i].transform);
-                        spotlights[i].turnedOn = true;
-                    }
 
                 }
                 else if (hasPlatform && selectedTransform != null)
                 {
                     PlaceOnThePlatform();
-                    for (int i = 0; i < puppet.stageSpots.Count; i++)
-                    {
-                        spotlights[i].turnedOn = false;
-                    }
                 }
                 else if (selectedTransform != null)
                 {
@@ -78,10 +62,6 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.position = puppet.startPosition;
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
-                    for (int i = 0; i < puppet.stageSpots.Count; i++)
-                    {
-                        spotlights[i].turnedOn = false;
-                    }
                 }
                 else if (hit.collider.GetComponent<Book>() is Book book)
                 {
