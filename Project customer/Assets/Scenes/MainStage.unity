@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17523733, g: 0.21924028, b: 0.3015507, a: 1}
+  m_IndirectSpecularColor: {r: 0.17523693, g: 0.21923971, b: 0.3015493, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -675,6 +675,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241605436}
   m_CullTransparentMesh: 1
+--- !u!1 &252738146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252738147}
+  - component: {fileID: 252738149}
+  - component: {fileID: 252738148}
+  m_Layer: 0
+  m_Name: Spot Light Book
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252738147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252738146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: -680, z: 511}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 922924672}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &252738148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252738146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad5dfb746ae0064b91613b2d96a8c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnedOn: 0
+--- !u!108 &252738149
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252738146}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 0.92941177, g: 0.93333334, b: 0.69803923, a: 1}
+  m_Intensity: 5
+  m_Range: 39.54
+  m_SpotAngle: 30.7
+  m_InnerSpotAngle: 3
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 12515
+  m_UseColorTemperature: 1
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &261257781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,6 +2288,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1571.6461, y: 193.23466, z: 739.5273}
   m_Center: {x: 0, y: 21.989378, z: 75.59936}
+--- !u!1 &922924671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2734096456892374499, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 29069299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &922924672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8003244079492544614, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 29069299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &922924673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922924671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f728b37754dad4ba4d7c4a28a6143c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlight: {fileID: 252738148}
+  bookPart: {fileID: 1747726215}
 --- !u!1 &1027072322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3273,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699989526}
   m_CullTransparentMesh: 1
+--- !u!1 &1747726215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6781563393518861083, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 29069299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1767924176
 GameObject:
   m_ObjectHideFlags: 0
