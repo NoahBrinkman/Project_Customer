@@ -6,7 +6,7 @@ using UnityEngine;
 public class InterviewSceneHandler : MonoBehaviour
 {
     [SerializeField] private List<ActorWithPrefab> props;
-
+    [SerializeField] private DialogueManager dialogueManager;
     private void Start()
     {
         for (int i = 0; i < props.Count; i++)
@@ -15,8 +15,9 @@ public class InterviewSceneHandler : MonoBehaviour
             {
                 props[i].prefab.SetActive(false);
             }
+
         }
-        
-        
+        dialogueManager.SelectConversation(InterviewManager.Instance.currentlySelected);
+        dialogueManager.NextDialogue();
     }
 }
