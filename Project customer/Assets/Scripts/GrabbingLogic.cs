@@ -9,13 +9,14 @@ public class GrabbingLogic : MonoBehaviour
     private StageSpot platform;
     private Puppet puppet;
     public SpotlightFollow spotlight;
-    [SerializeField] private List<SpotlightFollow> spotlights = new List<SpotlightFollow>();
+    public SpotlightFollow spotlightPuppet;
     private bool hasPlatform;
 
     // Start is called before the first frame update
     void Start()
     {
         spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
+        spotlightPuppet = gameObject.GetComponentInChildren<SpotlightFollow>();
     }
 
     // Update is called once per frame
@@ -39,6 +40,12 @@ public class GrabbingLogic : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+            if (hit.collider.gameObject.GetComponent<Puppet>())
+            {
+                Debug.Log("Puppet found");
+                spotlightPuppet.transform.LookAt(hit.transform);
+                spotlightPuppet.turnedOn = true;
+            }
             //Debug.Log(hit.collider.name);
             if (Input.GetMouseButtonDown(0))
             {
@@ -57,10 +64,8 @@ public class GrabbingLogic : MonoBehaviour
 
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
-                    selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
+                    selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer 
                 }
-                
-                
             }
             else
             {

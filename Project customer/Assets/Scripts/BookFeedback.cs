@@ -9,8 +9,7 @@ public class BookFeedback : MonoBehaviour
     void Start()
     {
         spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
-        spotlight.transform.LookAt(bookPart.transform);
-        
+        spotlight.transform.LookAt(bookPart.transform); 
     }
 
     void Update()
@@ -27,17 +26,13 @@ public class BookFeedback : MonoBehaviour
             FeedbackOne(hit);
             
         }
-
-        Debug.Log(spotlight.turnedOn);
     }
 
     private void FeedbackOne(RaycastHit hit)
     {
         if (hit.collider.gameObject.GetComponent<Book>())
         {
-            Debug.Log("I selected the book");
             spotlight.turnedOn = true;
-
         }
         else
         {
