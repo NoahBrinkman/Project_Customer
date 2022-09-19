@@ -47,9 +47,12 @@ public class GrabbingLogic : MonoBehaviour
                 spotlightPuppet.turnedOn = true;
             }
             //Debug.Log(hit.collider.name);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
-                
+                if (hit.collider.gameObject.GetComponent<Puppet>())
+                {
+                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<Puppet>().actor);
+                }
                 if (hit.collider.GetComponent<Book>() is Book book)
                 {
                     if (book != null) book.OnClick();

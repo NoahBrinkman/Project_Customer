@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ImageCycle : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> images;
-    [SerializeField] private Image image;
+    [SerializeField] private List<Image> images;
     private int index = -1;
     
 
@@ -20,8 +19,9 @@ public class ImageCycle : MonoBehaviour
     {
         if (index + 1 < images.Count)
         {
+            images[index].enabled = false;
             index++;
-            image.sprite = images[index];
+            images[index].enabled = true;
         }
     }
 
@@ -29,8 +29,9 @@ public class ImageCycle : MonoBehaviour
     {
         if (index - 1 >= 0)
         {
+            images[index].enabled = false;
             index--;
-            image.sprite = images[index];
+            images[index].enabled = true;
         }
     }
 }

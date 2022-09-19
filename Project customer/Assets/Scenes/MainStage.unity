@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17523693, g: 0.21923971, b: 0.3015493, a: 1}
+  m_IndirectSpecularColor: {r: 0.17523733, g: 0.21924028, b: 0.3015507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664436426}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ImageCycle, Assembly-CSharp
         m_MethodName: PreviousImage
         m_Mode: 1
@@ -408,82 +408,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &147933793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 147933794}
-  - component: {fileID: 147933796}
-  - component: {fileID: 147933795}
-  m_Layer: 5
-  m_Name: Subsance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &147933794
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147933793}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4875, y: 1.9339056, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 734640117}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.5}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &147933795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147933793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &147933796
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147933793}
-  m_CullTransparentMesh: 1
 --- !u!1 &166822351
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +464,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 574873598603486418774290633c03c2, type: 3}
   - {fileID: 21300000, guid: a4612da28fcb8534594fa42ea23dd313, type: 3}
   - {fileID: 21300000, guid: dadcbec6d5cbf6f418e10df283395be1, type: 3}
-  image: {fileID: 1877074195}
 --- !u!1 &241605436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,8 +1705,6 @@ RectTransform:
   m_Children:
   - {fileID: 23795444}
   - {fileID: 1626063096}
-  - {fileID: 1664436425}
-  - {fileID: 147933794}
   m_Father: {fileID: 714835692}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2925,6 +2846,83 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 533.1678, y: 171.88918, z: 474.3833}
   m_Center: {x: 0.000030517578, y: 61.63291, z: 0}
+--- !u!1 &1553586889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553586890}
+  - component: {fileID: 1553586891}
+  m_Layer: 0
+  m_Name: InterviewManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1553586890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553586889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553586891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553586889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f4a6a4a64705541b7405b4c4898996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subjects:
+  - actor: 1
+    AnswerDialogues:
+    - question: 'When you were a child, what did you want to be when you grew up? '
+      response: "I\u2019ve always wanted to be an actor of course. I\u2019ve spent
+        my whole life working up to this moment. I can\u2019t even begin to tell
+        you how happy I was to be cast in this amazing play. "
+  - actor: 2
+    AnswerDialogues:
+    - question: 'When you were a child, what did you want to be when you grew up? '
+      response: My father used to be a police officer. He wanted me to follow in
+        his footsteps and sent me to the academy. But I always wanted to be an actor,
+        so here I am.
+  - actor: 3
+    AnswerDialogues:
+    - question: 'What made you audition for this play? '
+      response: 'I was trying to get a more serious role.  '
+  - actor: 4
+    AnswerDialogues:
+    - question: 'What made you audition for this play? '
+      response: Well, it all started when my wife told me to stop impersonating a
+        flamingo. I had to put my foot down. Get it? I'm funny!
+  - actor: 5
+    AnswerDialogues:
+    - question: 'Have you made any friends on set so far? '
+      response: 'As a matter of fact, I have! The young lady playing the police officer
+        and I had a coffee after repetition last week. '
+  - actor: 5
+    AnswerDialogues:
+    - question: 'Have you made any friends on set so far? '
+      response: Are you kidding me? I am a professional. I see my fellow actors only
+        as colleagues.
+  currentlySelected: 0
 --- !u!1 &1626063095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +3007,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664436426}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ImageCycle, Assembly-CSharp
         m_MethodName: NextImage
         m_Mode: 1
@@ -3191,60 +3189,6 @@ Transform:
   m_Father: {fileID: 826366520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1664436424
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1664436425}
-  - component: {fileID: 1664436426}
-  m_Layer: 5
-  m_Name: Images
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1664436425
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664436424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 734640117}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1664436426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664436424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4135dd8992738944086717c518a3e13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  images:
-  - {fileID: 21300000, guid: a396a0bc877f787469c6649eb8196a38, type: 3}
-  - {fileID: 21300000, guid: 88b6f8345ee56a848bdc6a24c0abcc47, type: 3}
-  - {fileID: 21300000, guid: f1cd9f750264a2c4ab2219e0b43f99e8, type: 3}
-  image: {fileID: 147933795}
 --- !u!1 &1699989526
 GameObject:
   m_ObjectHideFlags: 0
