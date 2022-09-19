@@ -6,6 +6,7 @@ TagManager:
   tags:
   - drag
   - platform
+  - Passer
   layers:
   - Default
   - TransparentFX
