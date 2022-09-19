@@ -7,7 +7,8 @@ public class Puppet : MonoBehaviour
 {
     [HideInInspector] public Vector3 startPosition;
     public Actor actor = Actor.empty;
-    
+
+    [TextArea] public string endSceneDialogue;
     // Start is called before the first frame update
     void Start()
     {

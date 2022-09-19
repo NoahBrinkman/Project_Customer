@@ -11,11 +11,11 @@ public class Stage : MonoBehaviour
 
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
-    
-    [SerializeField] private int correctSceneBuildIndex;
-    [SerializeField] private int incorrectSceneBuildIndex;
-    
 
+    [SerializeField] private int endSceneBuildIndex = 2;
+
+    [SerializeField] private SelectionPasser selectionPasser;
+    
     public void OnDirectButtonClicked()
     {
         List<Actor> actorsInField = new List<Actor>();
@@ -24,9 +24,15 @@ public class Stage : MonoBehaviour
             actorsInField.Add(spots[i].occupiedBy);
         }
 
+        List<ActorSelection> selection = new List<ActorSelection>();
+        
         if (actorsInField.All(x => correctScene.actorScene.actors.Contains(x)))
         {
             Debug.Log("all correct");
+            for (int i = 0; i < actorsInField.Count; i++)
+            {
+                selection.Add(new ActorSelection(actorsInField[i],true));
+            }
         }
         else
         {
@@ -35,15 +41,18 @@ public class Stage : MonoBehaviour
                 if (correctScene.actorScene.actors.Contains(actorsInField[i]))
                 {
                     Debug.Log($"Index of actors in scene: {i} Matches");
+                    selection.Add(new ActorSelection(actorsInField[i],true));
                 }
                 else
                 {
+                    selection.Add( new ActorSelection(actorsInField[i], false));
                     Debug.Log("Wrong");
                 }
             }
         }
-        
-        
+
+        selectionPasser.selection = selection;
+        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex);
     }
     
 
@@ -54,4 +63,18 @@ public class Stage : MonoBehaviour
         Gizmos.DrawLine(new Vector3(transform.forward.x, transform.forward.y + .5f, transform.forward.z), new Vector3(transform.forward.x - .2f, transform.forward.y + .5f, transform.forward.z - .2f));
         Gizmos.DrawLine(new Vector3(transform.forward.x, transform.forward.y + .5f, transform.forward.z), new Vector3(transform.forward.x + .2f, transform.forward.y + .5f, transform.forward.z - .2f));
     }
+}
+
+public class ActorSelection
+{
+
+    public Actor actor;
+    public bool correct;
+    
+    public ActorSelection(Actor actor, bool correct)
+    {
+        this.actor = actor;
+        this.correct = correct;
+    }
+    
 }
