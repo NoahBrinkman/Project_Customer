@@ -18,8 +18,13 @@ public class StageSpot : MonoBehaviour
     {
         
         // transform.LookAt(lookAtTarget,Vector3.up);
-        ChangeColour();
+        //ChangeColour();
         hoveredOver = false;
+
+        if (transform.childCount == 0)
+        {
+            occupiedBy = Actor.empty;
+        }
     }
 
     private void OnActorPlaced(Actor actor, Transform actorTransform)
