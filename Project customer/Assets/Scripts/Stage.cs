@@ -7,45 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField] private List<StageScene> scenes = new List<StageScene>();
+    [SerializeField] private StageScene correctScene;
 
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
+    
     [SerializeField] private int correctSceneBuildIndex;
     [SerializeField] private int incorrectSceneBuildIndex;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
 
     public void OnDirectButtonClicked()
-    {
-        StageScene scene = AnyScenesMatch();
-        if (scene != null)
-        {
-            if (scene.correct)
-            {
-                Debug.Log("correct");
-                SceneTransitionManager.Instance.LoadSceneTransition(correctSceneBuildIndex);
-            }
-            else
-            {
-                Debug.Log("Incorrect");
-                SceneTransitionManager.Instance.LoadSceneTransition(incorrectSceneBuildIndex);
-            }
-        }
-    }
-    
-    private StageScene AnyScenesMatch()
     {
         List<Actor> actorsInField = new List<Actor>();
         for (int i = 0; i < spots.Count; i++)
@@ -53,16 +24,29 @@ public class Stage : MonoBehaviour
             actorsInField.Add(spots[i].occupiedBy);
         }
 
-        for (int j = 0; j < scenes.Count; j++)
+        if (actorsInField.All(x => correctScene.actorScene.actors.Contains(x)))
         {
-            
-            if (scenes[j].actorScene.actors.All(actorsInField.Contains))
+            Debug.Log("all correct");
+        }
+        else
+        {
+            for (int i = 0; i < actorsInField.Count; i++)
             {
-                return scenes[j];
+                if (correctScene.actorScene.actors.Contains(actorsInField[i]))
+                {
+                    Debug.Log($"Index of actors in scene: {i} Matches");
+                }
+                else
+                {
+                    Debug.Log("Wrong");
+                }
             }
         }
-        return null;
+        
+        
     }
+    
+
     
     private void OnDrawGizmos()
     {
