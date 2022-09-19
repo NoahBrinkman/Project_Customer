@@ -5,28 +5,42 @@ using UnityEngine;
 public class SpotlightFollow : MonoBehaviour
 {
     public bool turnedOn = false;
-    Light light;
+    public bool endLight = false;
+    public bool greenLight = false;
+    Light spotlight;
     // Start is called before the first frame update
     void Start()
     {
-        light = GetComponent<Light>();
+        spotlight = GetComponent<Light>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (turnedOn)
+        if (turnedOn && !endLight)
         {
-            light.enabled = true;
+            spotlight.enabled = true;
         }
         else
         {
-            light.enabled = false;
+            spotlight.enabled = false;
+        }
+
+        if (endLight)
+        {
+            spotlight.enabled = true;
+            if (endLight)
+            {
+                if (!greenLight)
+                {
+                    spotlight.color = Color.red;
+                }
+                else
+                {
+                    spotlight.color = Color.green;
+                }
+            }
         }
     }
 
-    public void FollowThePuppet()
-    {
-
-    }
 }
