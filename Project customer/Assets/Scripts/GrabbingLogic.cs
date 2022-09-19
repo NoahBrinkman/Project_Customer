@@ -42,16 +42,29 @@ public class GrabbingLogic : MonoBehaviour
             //Debug.Log(hit.collider.name);
             if (Input.GetMouseButtonDown(0))
             {
+                
+                if (hit.collider.GetComponent<Book>() is Book book)
+                {
+                    if (book != null) book.OnClick();
+                }
+
+            }
+
+            if (Input.GetMouseButton(0))
+            {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
 
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
-
-
                 }
-                else if (hasPlatform && selectedTransform != null)
+                
+                
+            }
+            else
+            {
+                if (hasPlatform && selectedTransform != null)
                 {
                     PlaceOnThePlatform();
                 }
@@ -63,11 +76,7 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
                 }
-                else if (hit.collider.GetComponent<Book>() is Book book)
-                {
-                    if (book != null) book.OnClick();
-                }
-
+                
             }
             //Move object around
             if (selectedTransform != null)
