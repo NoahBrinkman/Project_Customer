@@ -4256,8 +4256,8 @@ MonoBehaviour:
   - {fileID: 220677597}
   - {fileID: 915155410}
   - {fileID: 792761391}
-  correctSceneBuildIndex: 1
-  incorrectSceneBuildIndex: 2
+  correctSceneBuildIndex: 2
+  incorrectSceneBuildIndex: 3
 --- !u!4 &826366520
 Transform:
   m_ObjectHideFlags: 0
