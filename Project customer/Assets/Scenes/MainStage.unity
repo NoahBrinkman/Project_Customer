@@ -334,11 +334,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -165163913818756580, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b795b3c1edb2e3489a39f5b72d1b669, type: 2}
     - target: {fileID: 919132149155446097, guid: ccadb3c10c458c948ad1465bf8bb66a0,
         type: 3}
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
+    - target: {fileID: 5691501988426407151, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b795b3c1edb2e3489a39f5b72d1b669, type: 2}
+    - target: {fileID: 8093789147924007528, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b795b3c1edb2e3489a39f5b72d1b669, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccadb3c10c458c948ad1465bf8bb66a0, type: 3}
 --- !u!1 &44944138
@@ -11540,6 +11555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotlight: {fileID: 780421533}
   bookPart: {fileID: 1848227826}
+  mainPage: {fileID: 2054432764}
 --- !u!1 &1848227826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6781563393518861083, guid: ccadb3c10c458c948ad1465bf8bb66a0,
@@ -12419,6 +12435,12 @@ Transform:
   m_Father: {fileID: 357619734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &2054432764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2834697374596728586, guid: ccadb3c10c458c948ad1465bf8bb66a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 29069299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2055175401
 GameObject:
   m_ObjectHideFlags: 0
