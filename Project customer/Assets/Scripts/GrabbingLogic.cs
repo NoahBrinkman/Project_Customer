@@ -58,19 +58,17 @@ public class GrabbingLogic : MonoBehaviour
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer
-
-
                 }
-                else if (hasPlatform && selectedTransform != null)
-                {
-                    PlaceOnThePlatform();
-                }
+                
                 
             }
             else
             {
-                Debug.Log("Not dragging");
-                if (selectedTransform != null)
+                if (hasPlatform && selectedTransform != null)
+                {
+                    PlaceOnThePlatform();
+                }
+                else if (selectedTransform != null)
                 {
                     //Drop the puppet back to the chest - so move it to its start position
                     Debug.Log("Going back to the chest");
@@ -78,6 +76,7 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
                 }
+                
             }
             //Move object around
             if (selectedTransform != null)
