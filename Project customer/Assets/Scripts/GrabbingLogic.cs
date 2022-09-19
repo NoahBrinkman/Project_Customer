@@ -42,6 +42,16 @@ public class GrabbingLogic : MonoBehaviour
             //Debug.Log(hit.collider.name);
             if (Input.GetMouseButtonDown(0))
             {
+                
+                if (hit.collider.GetComponent<Book>() is Book book)
+                {
+                    if (book != null) book.OnClick();
+                }
+
+            }
+
+            if (Input.GetMouseButton(0))
+            {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
 
@@ -55,7 +65,12 @@ public class GrabbingLogic : MonoBehaviour
                 {
                     PlaceOnThePlatform();
                 }
-                else if (selectedTransform != null)
+                
+            }
+            else
+            {
+                Debug.Log("Not dragging");
+                if (selectedTransform != null)
                 {
                     //Drop the puppet back to the chest - so move it to its start position
                     Debug.Log("Going back to the chest");
@@ -63,11 +78,6 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
                 }
-                else if (hit.collider.GetComponent<Book>() is Book book)
-                {
-                    if (book != null) book.OnClick();
-                }
-
             }
             //Move object around
             if (selectedTransform != null)
