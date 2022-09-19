@@ -6,7 +6,6 @@ public class BookFeedback : MonoBehaviour
 {
     public SpotlightFollow spotlight;
     public GameObject bookPart;
-    public GameObject mainPage;
     void Start()
     {
         spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
@@ -26,7 +25,7 @@ public class BookFeedback : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             FeedbackOne(hit);
-            //FeedbackTwo(hit);
+            
         }
 
         Debug.Log(spotlight.turnedOn);
@@ -43,20 +42,6 @@ public class BookFeedback : MonoBehaviour
         else
         {
             spotlight.turnedOn = false;
-        }
-    }
-
-    private void FeedbackTwo(RaycastHit hit)
-    {
-        if (hit.collider.gameObject.GetComponent<Book>())
-        {
-            Debug.Log("I selected the book");
-            mainPage.GetComponent<Renderer>().material.color = Color.red;
-
-        }
-        else
-        {
-            mainPage.GetComponent<Renderer>().material.color = Color.grey;
         }
     }
 }
