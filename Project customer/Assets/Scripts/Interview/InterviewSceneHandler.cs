@@ -19,5 +19,12 @@ public class InterviewSceneHandler : MonoBehaviour
         }
         dialogueManager.SelectConversation(InterviewManager.Instance.currentlySelected);
         dialogueManager.NextDialogue();
+        dialogueManager.OnConversationComplete.AddListener(OnConversationComplete);
     }
+
+    private void OnConversationComplete()
+    {
+        SceneTransitionManager.Instance.LoadSceneTransition(1);
+    }
+    
 }
