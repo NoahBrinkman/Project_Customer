@@ -47,9 +47,12 @@ public class GrabbingLogic : MonoBehaviour
                 spotlightPuppet.turnedOn = true;
             }
             //Debug.Log(hit.collider.name);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
-                
+                if (hit.collider.gameObject.GetComponent<Puppet>())
+                {
+                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<Puppet>().actor);
+                }
                 if (hit.collider.GetComponent<Book>() is Book book)
                 {
                     if (book != null) book.OnClick();
@@ -57,7 +60,7 @@ public class GrabbingLogic : MonoBehaviour
 
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
@@ -66,10 +69,7 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer 
                 }
-            }
-            else
-            {
-                if (hasPlatform && selectedTransform != null)
+                else if (hasPlatform && selectedTransform != null)
                 {
                     PlaceOnThePlatform();
                 }
@@ -81,8 +81,8 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
                 }
-                
             }
+            
             //Move object around
             if (selectedTransform != null)
             {
