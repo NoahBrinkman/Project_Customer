@@ -1086,9 +1086,14 @@ MonoBehaviour:
         up? '
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
-      textSubstance: "My father used to be a police officer. He wanted me to follow
-        in his footsteps and sent me to the academy after I finished high school.
-        However, I\u2019ve really always wanted to be an actor. "
+      textSubstance: My father used to be a police officer.
+    - text: {fileID: 1426787929}
+      image: {fileID: 1676334629}
+      textSubstance: 'He wanted me to follow in his footsteps and sent me to the
+        academy after I finished high school. '
+    - text: {fileID: 1426787929}
+      image: {fileID: 1676334629}
+      textSubstance: "However, I\u2019ve really always wanted to be an actor. "
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: Alright. That gives me enough information thank you.
@@ -1103,9 +1108,14 @@ MonoBehaviour:
         up?
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
-      textSubstance: "I\u2019ve always wanted to be an actor of course. I\u2019ve
-        spent my whole life working up to this moment. I can\u2019t even begin to
-        tell you how happy I was to be cast in this amazing play."
+      textSubstance: "I\u2019ve always wanted to be an actor of course."
+    - text: {fileID: 1426787929}
+      image: {fileID: 1676334629}
+      textSubstance: " I\u2019ve spent my whole life working up to this moment. "
+    - text: {fileID: 1426787929}
+      image: {fileID: 1676334629}
+      textSubstance: "I can\u2019t even begin to tell you how happy I was to be cast
+        in this amazing play."
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: Okay, Thank you.
