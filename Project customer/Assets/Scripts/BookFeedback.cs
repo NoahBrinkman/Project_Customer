@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for feedback for the Book object
+/// </summary>
 public class BookFeedback : MonoBehaviour
 {
     public SpotlightFollow spotlight;
     public GameObject bookPart;
+
     void Start()
     {
         spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
@@ -17,26 +19,24 @@ public class BookFeedback : MonoBehaviour
         HoverOver();
     }
 
+    /// <summary>
+    /// Method to show the spotlight after hovering over the book
+    /// </summary>
     public void HoverOver()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            FeedbackOne(hit);
-            
-        }
-    }
+            if (hit.collider.gameObject.GetComponent<Book>())
+            {
+                spotlight.turnedOn = true;
+            }
+            else
+            {
+                spotlight.turnedOn = false;
+            }
 
-    private void FeedbackOne(RaycastHit hit)
-    {
-        if (hit.collider.gameObject.GetComponent<Book>())
-        {
-            spotlight.turnedOn = true;
-        }
-        else
-        {
-            spotlight.turnedOn = false;
         }
     }
 }
