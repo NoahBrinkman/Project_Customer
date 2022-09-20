@@ -169,7 +169,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9137255, g: 0.06211689, b: 0.02745095, a: 1}
   m_Intensity: 40
-  m_Range: 4.601864
+  m_Range: 3.1356163
   m_SpotAngle: 27.823399
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &342096579
 Light:
   m_ObjectHideFlags: 0
@@ -1091,6 +1091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 995690041}
   - component: {fileID: 995690040}
+  - component: {fileID: 995690042}
   - component: {fileID: 995690039}
   m_Layer: 0
   m_Name: Main Camera
@@ -1157,14 +1158,35 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995690038}
-  m_LocalRotation: {x: 0.00083638076, y: 0.98941433, z: -0.14498217, w: 0.006234482}
+  m_LocalRotation: {x: 0, y: 0.9914449, z: -0.13052616, w: 0}
   m_LocalPosition: {x: -0.0002326415, y: 5.620014, z: 0.3381422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 180, z: 0}
+--- !u!114 &995690042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995690038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975dbbf56b3fb5040a34c0490eecd903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomedInFew: 18
+  zoomedOutFew: 60
+  time: 1
+  lookRotations:
+  - 165
+  - 180
+  - 200
+  - 180
+  rotationTime: 0.5
 --- !u!1 &1456891399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1233,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9137255, g: 0.06211689, b: 0.02745095, a: 1}
   m_Intensity: 40
-  m_Range: 4.601864
+  m_Range: 3.3358498
   m_SpotAngle: 28
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -1503,7 +1525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1599407959
 Light:
   m_ObjectHideFlags: 0
@@ -1721,7 +1743,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9137255, g: 0.06211689, b: 0.02745095, a: 1}
   m_Intensity: 40
-  m_Range: 4.601864
+  m_Range: 3.5163567
   m_SpotAngle: 27
   m_InnerSpotAngle: 1
   m_CookieSize: 10
