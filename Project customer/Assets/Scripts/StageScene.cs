@@ -1,9 +1,6 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Custom made tool to easily assign the right solution to the puzzles
-/// </summary>
 public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2}
 
 [Serializable]
