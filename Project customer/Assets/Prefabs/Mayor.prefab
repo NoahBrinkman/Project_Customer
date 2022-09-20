@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
   actor: 5
+  endSceneDialogue: 
 --- !u!1 &3504826511471354286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1415,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 3bcf08cc52d822240848fa6b7eae46cf, type: 3}
+  - {fileID: 2100000, guid: 7e734a7a12120784384ec1772b9b3646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
