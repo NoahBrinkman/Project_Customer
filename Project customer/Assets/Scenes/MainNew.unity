@@ -2212,6 +2212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6143746780566602216, guid: 2f1843c21f380354e8bfb47c323ab5ad,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f1843c21f380354e8bfb47c323ab5ad, type: 3}
 --- !u!1 &652666484
