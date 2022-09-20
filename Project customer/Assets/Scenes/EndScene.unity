@@ -225,14 +225,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148855934}
-  m_LocalRotation: {x: 0.7289686, y: 0, z: 0, w: 0.6845471}
-  m_LocalPosition: {x: -2, y: 3.5, z: 0.16}
+  m_LocalRotation: {x: 0.6777223, y: 0.13490775, z: 0.14789134, w: 0.70754546}
+  m_LocalPosition: {x: -3.1, y: 2.68, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 484490705}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 93.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 66.8, y: 83.443, z: 84.517}
 --- !u!1 &160703762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1212,7 @@ Light:
   m_Color: {r: 0.9137255, g: 0.06211689, b: 0.02745095, a: 1}
   m_Intensity: 40
   m_Range: 4.601864
-  m_SpotAngle: 28
+  m_SpotAngle: 18.153532
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1247,7 +1247,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1268,7 +1268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456891399}
   m_LocalRotation: {x: 0.7289686, y: 0, z: 0, w: 0.6845471}
-  m_LocalPosition: {x: 0.03, y: 3.5, z: 0.16}
+  m_LocalPosition: {x: -0.02, y: 3.5, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1777,14 +1777,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892450907}
-  m_LocalRotation: {x: 0.7289686, y: 0, z: 0, w: 0.6845471}
-  m_LocalPosition: {x: 2.06, y: 3.5, z: 0.16}
+  m_LocalRotation: {x: 0.70925426, y: -0.12803376, z: -0.11497876, w: 0.68362683}
+  m_LocalPosition: {x: 2.82, y: 2.68, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 484490705}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 93.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 109.9, y: 83.443, z: 84.517}
 --- !u!1 &1917804373
 GameObject:
   m_ObjectHideFlags: 0
