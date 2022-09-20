@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace DefaultNamespace
+/// <summary>
+/// Class responsible for the EndStageSpots
+/// </summary>
+public class EndStageSpot : MonoBehaviour
 {
-    public class EndStageSpot: MonoBehaviour
-    {
-        public bool correct = false;
-        [TextArea] public string endSceneDialogue;
+    public bool correct = false;
+    [TextArea] public string endSceneDialogue;
 
-    }
 }

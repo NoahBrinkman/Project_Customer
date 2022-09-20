@@ -1,10 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class responsible for the actions of the button shown in the book
+/// </summary>
 public class CloseBookButton : MonoBehaviour
 {
     [SerializeField] private GameObject masterParent;
@@ -17,5 +16,4 @@ public class CloseBookButton : MonoBehaviour
     {
         masterParent.SetActive(false);
     }
-    
 }
