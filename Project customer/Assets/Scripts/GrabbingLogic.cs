@@ -7,7 +7,7 @@ public class GrabbingLogic : MonoBehaviour
     private Transform selectedTransform;
     [SerializeField] private float heightOffset = 1;
     private StageSpot platform;
-    private Puppet puppet;
+    private GrabbableActor puppet;
     public SpotlightFollow spotlight;
     private bool hasPlatform;
     private bool hasPuppet;
@@ -39,7 +39,7 @@ public class GrabbingLogic : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.gameObject.GetComponent<Puppet>())
+            if (hit.collider.gameObject.GetComponent<GrabbableActor>())
             {
                 hasPuppet = true;
                 Debug.Log("Puppet found");
@@ -49,9 +49,9 @@ public class GrabbingLogic : MonoBehaviour
             //Debug.Log(hit.collider.name);
             if (Input.GetMouseButtonDown(1))
             {
-                if (hit.collider.gameObject.GetComponent<Puppet>())
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>())
                 {
-                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<Puppet>().actor);
+                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<GrabbableActor>().actor);
                 }
                 if (hit.collider.GetComponent<Book>() is Book book)
                 {
@@ -62,10 +62,10 @@ public class GrabbingLogic : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.gameObject.GetComponent<Puppet>())
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>())
                 {
                     hasPuppet = false;
-                    puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
+                    puppet = hit.collider.gameObject.GetComponent<GrabbableActor>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer 
                 }
@@ -121,7 +121,7 @@ public class GrabbingLogic : MonoBehaviour
         selectedTransform.parent = platform.transform;
         selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
         selectedTransform.LookAt(new Vector3(platform.lookAtTarget.position.x, selectedTransform.position.y, platform.lookAtTarget.position.z), Vector3.up);
-        platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
+        platform.occupiedBy = selectedTransform.GetComponent<GrabbableActor>().actor;
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
         hasPlatform = false;

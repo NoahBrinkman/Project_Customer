@@ -36,7 +36,7 @@ public class EndStage : MonoBehaviour
             lightGreen = selection[i].correct;
             spotlights[i].endLight = true;
             spotlights[i].greenLight = selection[i].correct;
-            spots[i].endSceneDialogue = dictionary[selection[i].actor].GetComponent<Puppet>().endSceneDialogue;
+            spots[i].endSceneDialogue = dictionary[selection[i].actor].GetComponent<GrabbableActor>().endSceneDialogue;
             g.transform.localPosition = new Vector3(0, .5f, 0);
 
         }
