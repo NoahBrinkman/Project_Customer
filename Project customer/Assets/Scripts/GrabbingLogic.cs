@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabbingLogic : MonoBehaviour
 {
-    private Transform selectedTransform;
-    [SerializeField] private float heightOffset = 1;
-    private StageSpot platform;
-    private Puppet puppet;
     public SpotlightFollow spotlight;
-    private bool hasPlatform;
-    private bool hasPuppet;
+
+    [SerializeField] private float heightOffset = 1;
+
+    private Transform selectedTransform;
+    private StageSpot stageSpot;
+    private GrabbableActor actor;
+
+    private bool hasStageSpot;
+    private bool actorHovered;
 
     // Start is called before the first frame update
     void Start()
@@ -22,68 +23,75 @@ public class GrabbingLogic : MonoBehaviour
     void Update()
     {
         DragAndDrop();
-        if (hasPlatform && !hasPuppet)
+        if (hasStageSpot && !actorHovered)
         {
-            spotlight.transform.LookAt(platform.transform);
+            spotlight.transform.LookAt(stageSpot.transform);
             spotlight.turnedOn = true;
         }
-        else if (!hasPuppet)
+        else if (!actorHovered)
         {
             spotlight.turnedOn = false;
         }
-
-
     }
+
+    /// <summary>
+    /// Method responsible for dragging and dropping the Actor on the StageSpot
+    /// </summary>
     private void DragAndDrop()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.gameObject.GetComponent<Puppet>())
+            //Show the spotlight on the Actor that the mouse is hovered over
+            if (hit.collider.gameObject.GetComponent<GrabbableActor>())
             {
-                hasPuppet = true;
-                Debug.Log("Puppet found");
+                actorHovered = true;
                 spotlight.transform.LookAt(hit.transform);
                 spotlight.turnedOn = true;
+                //Debug.Log("Puppet found");
             }
-            //Debug.Log(hit.collider.name);
+
+            //Righclick responsible for interaction with objects
             if (Input.GetMouseButtonDown(1))
             {
-                if (hit.collider.gameObject.GetComponent<Puppet>())
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>())
                 {
-                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<Puppet>().actor);
+                    InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<GrabbableActor>().actor);
                 }
+
                 if (hit.collider.GetComponent<Book>() is Book book)
                 {
                     if (book != null) book.OnClick();
                 }
-
             }
 
+            //Leftclick responsible for dragging and dropping
             if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.gameObject.GetComponent<Puppet>())
+                //Dragging the Actor
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>())
                 {
-                    hasPuppet = false;
-                    puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
-                    selectedTransform = puppet.transform;
-                    selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer 
+                    actorHovered = false;
+                    actor = hit.collider.gameObject.GetComponent<GrabbableActor>();            //Assing the Puppet object to get variables like start position
+                    selectedTransform = actor.transform;
+                    selectedTransform.gameObject.layer = 2;                                     //Set object to ignore raycast layer 
                 }
-                else if (hasPlatform && selectedTransform != null)
+                //Placing the Actor on the StageSpot
+                else if (hasStageSpot && selectedTransform != null)
                 {
                     PlaceOnThePlatform();
                 }
+                //Teleporting the Actor back to its start position
                 else if (selectedTransform != null)
                 {
-                    //Drop the puppet back to the chest - so move it to its start position
-                    Debug.Log("Going back to the chest");
-                    selectedTransform.position = puppet.startPosition;
+                    selectedTransform.position = actor.startPosition;
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
+                    //Debug.Log("Going back to the chest");
                 }
             }
-            
-            //Move object around
+
+            //Move object around after click on it
             if (selectedTransform != null)
             {
                 selectedTransform.position = hit.point;
@@ -93,37 +101,42 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.position.z);
                 CheckForPlatform();
             }
-
         }
     }
 
+    /// <summary>
+    /// Method responsible for checking if Actor is above the StageSpot
+    /// </summary>
     private void CheckForPlatform()
     {
-        RaycastHit hit;
-        Physics.Raycast(selectedTransform.position, Vector3.down, out hit);
+        Physics.Raycast(selectedTransform.position, Vector3.down, out RaycastHit hit);
         Debug.DrawRay(selectedTransform.position, -Vector3.up * 5f, Color.green);
         //Debug.Log(hit.transform.name);
         if (hit.transform.GetComponent<StageSpot>() && selectedTransform.gameObject.layer == 2)
         {
-            platform = hit.transform.GetComponent<StageSpot>();
-            platform.hoveredOver = true;                                                //Used for changing colour of the platform when hovered over - to show player which platform is chosen at the moment
-            hasPlatform = true;                                                         //Used to determine if the puppet is already standing on the platform (used so we can have all the mouse clicking in drag and drop method)
+            stageSpot = hit.transform.GetComponent<StageSpot>();
+            stageSpot.hoveredOver = true;
+            hasStageSpot = true;
         }
         else
         {
-            hasPlatform = false;
+            hasStageSpot = false;
         }
     }
 
     //Place the puppet on the spot
     private void PlaceOnThePlatform()
     {
-        selectedTransform.parent = platform.transform;
+        selectedTransform.parent = stageSpot.transform;
         selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
-        selectedTransform.LookAt(new Vector3(platform.lookAtTarget.position.x, selectedTransform.position.y, platform.lookAtTarget.position.z), Vector3.up);
-        platform.occupiedBy = selectedTransform.GetComponent<Puppet>().actor;
+        selectedTransform.LookAt(new Vector3(stageSpot.lookAtTarget.position.x, selectedTransform.position.y, stageSpot.lookAtTarget.position.z), Vector3.up);
+        stageSpot.occupiedBy = selectedTransform.GetComponent<GrabbableActor>().actor;
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
-        hasPlatform = false;
+        hasStageSpot = false;
+    }
+
+    private void TurnTheLights(RaycastHit hit)
+    {
     }
 }

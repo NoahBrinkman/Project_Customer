@@ -1,9 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Puppet : MonoBehaviour
+/// <summary>
+/// Class responsible for Actor connected variables
+/// </summary>
+public class GrabbableActor : MonoBehaviour
 {
     [HideInInspector] public Vector3 startPosition;
     public Actor actor = Actor.empty;
@@ -14,7 +14,4 @@ public class Puppet : MonoBehaviour
     {
         startPosition = transform.position;
     }
-
-
-
 }

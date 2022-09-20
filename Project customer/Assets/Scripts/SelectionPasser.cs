@@ -1,7 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for the Selection Passer
+/// </summary>
 public class SelectionPasser : MonoBehaviour
 {
     public List<ActorSelection> selection = new List<ActorSelection>();
@@ -9,6 +11,4 @@ public class SelectionPasser : MonoBehaviour
     {
         DontDestroyOnLoad(this);
     }
-
-
 }
