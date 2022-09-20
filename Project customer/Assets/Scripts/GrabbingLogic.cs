@@ -9,26 +9,25 @@ public class GrabbingLogic : MonoBehaviour
     private StageSpot platform;
     private Puppet puppet;
     public SpotlightFollow spotlight;
-    public SpotlightFollow spotlightPuppet;
     private bool hasPlatform;
+    private bool hasPuppet;
 
     // Start is called before the first frame update
     void Start()
     {
         spotlight = gameObject.GetComponentInChildren<SpotlightFollow>();
-        spotlightPuppet = gameObject.GetComponentInChildren<SpotlightFollow>();
     }
 
     // Update is called once per frame
     void Update()
     {
         DragAndDrop();
-        if (hasPlatform)
+        if (hasPlatform && !hasPuppet)
         {
             spotlight.transform.LookAt(platform.transform);
             spotlight.turnedOn = true;
         }
-        else
+        else if (!hasPuppet)
         {
             spotlight.turnedOn = false;
         }
@@ -42,9 +41,10 @@ public class GrabbingLogic : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Puppet>())
             {
+                hasPuppet = true;
                 Debug.Log("Puppet found");
-                spotlightPuppet.transform.LookAt(hit.transform);
-                spotlightPuppet.turnedOn = true;
+                spotlight.transform.LookAt(hit.transform);
+                spotlight.turnedOn = true;
             }
             //Debug.Log(hit.collider.name);
             if (Input.GetMouseButtonDown(1))
@@ -64,7 +64,7 @@ public class GrabbingLogic : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<Puppet>())
                 {
-
+                    hasPuppet = false;
                     puppet = hit.collider.gameObject.GetComponent<Puppet>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = puppet.transform;
                     selectedTransform.gameObject.layer = 2;                             //Set object to ignore raycast layer 
