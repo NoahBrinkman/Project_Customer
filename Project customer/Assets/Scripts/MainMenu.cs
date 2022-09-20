@@ -1,21 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for the main menu logic and buttons
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Method to close the game (or go back to the editor)
+    /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -25,6 +17,9 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Method to start the game
+    /// </summary>
     public void StartGame()
     {
         SceneTransitionManager.Instance.LoadSceneTransition(1);
