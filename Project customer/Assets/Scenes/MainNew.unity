@@ -484,7 +484,7 @@ MonoBehaviour:
   - {fileID: 1601255890}
   - {fileID: 1504366116}
   - {fileID: 322857370}
-  endSceneBuildIndex: 3
+  endSceneBuildIndex: 4
 --- !u!4 &189191972
 Transform:
   m_ObjectHideFlags: 0
