@@ -39,7 +39,11 @@ public class CameraSwitich : MonoBehaviour
 
     private void Update()
     {
-        if (finished) return;
+        if (finished)
+        {
+            MoveToFinalScene();
+            return;
+        }
         if (zooming)
         {
             timer += Time.deltaTime;
@@ -94,13 +98,17 @@ public class CameraSwitich : MonoBehaviour
                 else
                 {
                     index = 0;
+                    OnCameraSwitched.AddListener(MoveToFinalScene);
                 }
             }
         }
         
         
     }
-
+    private void MoveToFinalScene()
+    {
+        SceneTransitionManager.Instance.LoadSceneTransition(5);
+    }
     public void NextSpot()
     {
         if (firstActivation)
