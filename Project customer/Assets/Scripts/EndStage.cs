@@ -62,10 +62,16 @@ public class EndStage : MonoBehaviour
         spots[index].Deactivate();
         if (index + 1 < spots.Count)
         {
-            
             index++;
+        }
+        else
+        {
+            //switcher.OnCameraSwitched.RemoveListener(ActivateNewDialogue);
+         
         }
         switcher.NextSpot();
     }
+
+
     
 }
