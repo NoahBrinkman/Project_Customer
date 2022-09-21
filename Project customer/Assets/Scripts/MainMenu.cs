@@ -22,6 +22,6 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneTransitionManager.Instance.LoadSceneTransition(1);
+        SceneTransitionManager.Instance.LoadSceneTransition(1,false);
     }
 }

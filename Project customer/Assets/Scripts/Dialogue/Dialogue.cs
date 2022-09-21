@@ -8,8 +8,8 @@ namespace DefaultNamespace.Dialogue
     [Serializable]
     public class Dialogue
     {
-        [SerializeField] private TMP_Text text;
-        [SerializeField] private Image image;
+        public TMP_Text text;
+        public Image image;
         [SerializeField,TextArea] private string textSubstance;
 
         public void EnableText()
@@ -25,6 +25,10 @@ namespace DefaultNamespace.Dialogue
             image.enabled = false;
             text.enabled = false;
         }
-        
+
+        public string GetText()
+        {
+            return textSubstance;
+        }
     }
 }

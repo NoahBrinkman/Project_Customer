@@ -37,7 +37,7 @@ public class InterviewManager : MonoBehaviour
 
     public void GoToInterviewScene(Actor actor)
     {
-        SceneTransitionManager.Instance.LoadSceneTransition(3);
+        SceneTransitionManager.Instance.LoadSceneTransition(3,false);
         currentlySelected = actor;
     }
     

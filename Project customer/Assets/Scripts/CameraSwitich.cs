@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraSwitich : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class CameraSwitich : MonoBehaviour
 
     private float startRotation;
     private bool firstActivation = true;
+    private bool finished = false;
+
+
+    public UnityEvent OnCameraSwitched;
+    
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -33,11 +39,7 @@ public class CameraSwitich : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            NextSpot();
-        }
-        
+        if (finished) return;
         if (zooming)
         {
             timer += Time.deltaTime;
@@ -56,6 +58,10 @@ public class CameraSwitich : MonoBehaviour
                 {
                     rotating = true;
                 }
+                else
+                {
+                    OnCameraSwitched?.Invoke();
+                }
                 timer = 0;
             }
         }
@@ -64,10 +70,7 @@ public class CameraSwitich : MonoBehaviour
         if (rotating)
         {
             rotationTimer += Time.deltaTime;
-            //rotationY = Mathf.Lerp(rotationY, lookRotations[index], rotationTimer / rotationTime);
-            //transform.rotation = Quaternion.Lerp(new Quaternion(15, transform.rotation.y, transform.rotation.z,0),
-             //   new Quaternion(15, lookRotations[index], transform.rotation.z,0), rotationTimer/rotationTime);
-             Vector3 currentRotation = transform.eulerAngles;
+            Vector3 currentRotation = transform.eulerAngles;
              currentRotation.y = Mathf.Lerp (currentRotation.y, lookRotations[index], rotationTimer/rotationTime);
              transform.eulerAngles = currentRotation;
             if (rotationTimer >= rotationTime)
@@ -78,6 +81,10 @@ public class CameraSwitich : MonoBehaviour
                 if (index != lookRotations.Count - 1)
                 {
                     zooming = true;
+                }
+                else
+                {
+                    finished = true;
                 }
                 
                 if (index + 1 < lookRotations.Count)
