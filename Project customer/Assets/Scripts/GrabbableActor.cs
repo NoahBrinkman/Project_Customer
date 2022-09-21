@@ -7,6 +7,7 @@ public class GrabbableActor : MonoBehaviour
 {
     [HideInInspector] public Vector3 startPosition;
     public Actor actor = Actor.empty;
+    public bool isManager = false;
 
     [TextArea] public string endSceneDialogue;
     // Start is called before the first frame update
