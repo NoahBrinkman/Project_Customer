@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class SceneTransitionManager : MonoBehaviour
     public static SceneTransitionManager Instance { get; private set; }
     [SerializeField] private float sceneTransitionTimePerHalf = 0.5f;
     [SerializeField] private Animator transitionAnimator;
+    private bool intransit = false;
     private void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
@@ -23,15 +25,20 @@ public class SceneTransitionManager : MonoBehaviour
         } 
     }
 
-    public void LoadSceneTransition(int buildIndex)
+    public void LoadSceneTransition(int buildIndex, bool useStandardTransition = true)
     {
-        StartCoroutine(LoadSceneAsync(buildIndex));
+        if(intransit) return;
+        intransit = true;
+        StartCoroutine(LoadSceneAsync(buildIndex, useStandardTransition));
     }
 
-    private IEnumerator LoadSceneAsync(int buildIndex)
+    private IEnumerator LoadSceneAsync(int buildIndex, bool useStandardTransition)
     {
         //Start animation
-        transitionAnimator.SetBool("startAnimation",true);
+        if(useStandardTransition)
+            transitionAnimator.SetBool("startAnimation",true);
+        else
+            transitionAnimator.SetBool("startAnimationVariant",true);
         yield return new WaitForSeconds(sceneTransitionTimePerHalf);
         AsyncOperation async = SceneManager.LoadSceneAsync(buildIndex);
         while (!async.isDone)
@@ -39,9 +46,12 @@ public class SceneTransitionManager : MonoBehaviour
             yield return null;
         }
         //start other animation
-        transitionAnimator.SetBool("startAnimation",false);
+        if(useStandardTransition)
+            transitionAnimator.SetBool("startAnimation",false);
+        else
+            transitionAnimator.SetBool("startAnimationVariant",false);
         yield return new WaitForSeconds(sceneTransitionTimePerHalf);
-        
+        intransit = false;
         yield break;
     }
     

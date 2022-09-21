@@ -9,12 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: e3f68a2e74ee421478fd72f48e3ba3aa
   - enabled: 1
-    path: Assets/Scenes/MainStage.unity
-    guid: 943e8304e0c5f2f47822dc4772fc3b3b
+    path: Assets/Scenes/LetterScene.unity
+    guid: 72f093c845e4fdc45bfc44f0d1d61e4c
+  - enabled: 1
+    path: Assets/Scenes/TutorialSceneDialogue.unity
+    guid: bf7267c0d683610469c42f4ec906ca1b
+  - enabled: 1
+    path: Assets/Scenes/MainNew.unity
+    guid: 6004268115a2aec48a96ae9113447e38
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: 7bc81480cf9892e4cbf411b7c51651d5
   - enabled: 1
     path: Assets/Scenes/InterviewRoom.unity
     guid: a9da739190d2dec4da6f6ae8be689a04
+  - enabled: 1
+    path: Assets/Scenes/FinalDialogueScene.unity
+    guid: f97aa8b3c5eebb14b8d390db161e5158
   m_configObjects: {}

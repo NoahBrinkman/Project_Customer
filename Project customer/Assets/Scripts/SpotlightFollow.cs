@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for turning on the Spotlights and changing their colours
+/// </summary>
 public class SpotlightFollow : MonoBehaviour
 {
     public bool turnedOn = false;
     public bool endLight = false;
     public bool greenLight = false;
-    Light spotlight;
-    // Start is called before the first frame update
+
+    private Light spotlight;
+
     void Start()
     {
         spotlight = GetComponent<Light>();
@@ -21,26 +23,26 @@ public class SpotlightFollow : MonoBehaviour
         {
             spotlight.enabled = true;
         }
+        else if (endLight)
+        {
+            spotlight.enabled = true;
+
+            if (!greenLight)
+            {
+                spotlight.color = Color.red;
+            }
+            else
+            {
+                spotlight.color = Color.green;
+            }
+
+        }
         else
         {
             spotlight.enabled = false;
         }
 
-        if (endLight)
-        {
-            spotlight.enabled = true;
-            if (endLight)
-            {
-                if (!greenLight)
-                {
-                    spotlight.color = Color.red;
-                }
-                else
-                {
-                    spotlight.color = Color.green;
-                }
-            }
-        }
+
     }
 
 }

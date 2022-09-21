@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2}
+public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2,manager}
 
 [Serializable]
 public class ActorScene

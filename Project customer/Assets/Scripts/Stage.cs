@@ -12,9 +12,9 @@ public class Stage : MonoBehaviour
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
 
-    [SerializeField] private int endSceneBuildIndex = 2;
+    [SerializeField] private int endSceneBuildIndex = 4;
 
-    [SerializeField] private SelectionPasser selectionPasser;
+   
     
     public void OnDirectButtonClicked()
     {
@@ -51,7 +51,7 @@ public class Stage : MonoBehaviour
             }
         }
 
-        selectionPasser.selection = selection;
+        SelectionPasser.Instance.selection = selection;
         SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex);
     }
     
