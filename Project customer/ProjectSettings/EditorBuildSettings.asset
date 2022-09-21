@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LetterScene.unity
     guid: 72f093c845e4fdc45bfc44f0d1d61e4c
   - enabled: 1
+    path: Assets/Scenes/TutorialSceneDialogue.unity
+    guid: bf7267c0d683610469c42f4ec906ca1b
+  - enabled: 1
     path: Assets/Scenes/MainNew.unity
     guid: 6004268115a2aec48a96ae9113447e38
   - enabled: 1
