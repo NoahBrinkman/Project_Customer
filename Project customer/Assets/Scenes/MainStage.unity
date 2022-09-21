@@ -1390,8 +1390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714c0a6747edbe747a17a522b89b9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightOffset: 0.6
   spotlight: {fileID: 2075790049}
+  heightOffset: 0.6
 --- !u!1 &414749422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,8 +2029,7 @@ MonoBehaviour:
   - {fileID: 1651184676}
   - {fileID: 467393042}
   - {fileID: 261257782}
-  endSceneBuildIndex: 2
-  selectionPasser: {fileID: 1027072324}
+  endSceneBuildIndex: 3
 --- !u!4 &826366520
 Transform:
   m_ObjectHideFlags: 0

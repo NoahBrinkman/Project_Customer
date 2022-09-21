@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomedInFew: 35
   zoomedOutFew: 60
-  time: 1
+  time: 0.6
   lookRotations:
   - 165
   - 180
@@ -4082,3 +4082,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049105551}
   m_CullTransparentMesh: 1
+--- !u!1 &2120596866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120596867}
+  - component: {fileID: 2120596868}
+  m_Layer: 0
+  m_Name: Light Probe Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120596867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120596866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -5.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!220 &2120596868
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120596866}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 6.75, y: 5, z: 1}
+  - {x: 6.75, y: 5, z: -3.75}
+  - {x: 6.75, y: -1, z: 1}
+  - {x: 6.75, y: -1, z: -3.75}
+  - {x: -7, y: 5, z: 1}
+  - {x: -7, y: 5, z: -4}
+  - {x: -6.75, y: -1, z: 1}
+  - {x: -7, y: -1, z: -4}
+  m_Dering: 1
