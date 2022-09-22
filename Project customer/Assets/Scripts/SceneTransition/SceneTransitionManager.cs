@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +26,26 @@ public class SceneTransitionManager : MonoBehaviour
         } 
     }
 
-    public void LoadSceneTransition(int buildIndex, bool useStandardTransition = true)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            #if UNITY_EDITOR
+                 UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+
+            Application.Quit();
+        }
+    }
+
+    public void LoadSceneTransition(int buildIndex, bool useStandardTransition = true, float waitBeforeFullTransition = 0)
     {
         if(intransit) return;
         intransit = true;
-        StartCoroutine(LoadSceneAsync(buildIndex, useStandardTransition));
+        StartCoroutine(LoadSceneAsync(buildIndex, useStandardTransition, waitBeforeFullTransition));
     }
 
-    private IEnumerator LoadSceneAsync(int buildIndex, bool useStandardTransition)
+    private IEnumerator LoadSceneAsync(int buildIndex, bool useStandardTransition, float waitBeforeFullTransition = 0)
     {
         //Start animation
         if(useStandardTransition)
@@ -40,6 +53,7 @@ public class SceneTransitionManager : MonoBehaviour
         else
             transitionAnimator.SetBool("startAnimationVariant",true);
         yield return new WaitForSeconds(sceneTransitionTimePerHalf);
+        yield return new WaitForSeconds(waitBeforeFullTransition);
         AsyncOperation async = SceneManager.LoadSceneAsync(buildIndex);
         while (!async.isDone)
         {

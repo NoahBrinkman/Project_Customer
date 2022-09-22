@@ -24,6 +24,10 @@ public class Stage : MonoBehaviour
             actorsInField.Add(spots[i].occupiedBy);
         }
 
+        if (actorsInField.Any(a => a == Actor.empty || a == Actor.manager))
+        {
+            return;
+        }
         List<ActorSelection> selection = new List<ActorSelection>();
         
         if (actorsInField.All(x => correctScene.actorScene.actors.Contains(x)))
@@ -52,7 +56,7 @@ public class Stage : MonoBehaviour
         }
 
         SelectionPasser.Instance.selection = selection;
-        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex);
+        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex, true, 1);
     }
     
 
