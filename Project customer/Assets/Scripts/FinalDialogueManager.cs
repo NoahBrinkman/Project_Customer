@@ -11,6 +11,7 @@ public class FinalDialogueManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayMusic("End");
         int amountCorrect = SelectionPasser.Instance.AmountCorrect();
         if (amountCorrect >= 0 && amountCorrect < dialogueByScore.Count)
         {

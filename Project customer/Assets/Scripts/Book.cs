@@ -11,6 +11,7 @@ public class Book : MonoBehaviour
     {
         bookUI.SetActive(!bookUI.activeSelf);
         GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
+        AudioManager.Instance.PlaySound("OpenBook");
     }
     //Comment to get the unity back on track
 }
