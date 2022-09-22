@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1095,7 +1095,7 @@ MonoBehaviour:
         academy after I finished high school. '
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
-      textSubstance: "However, I\u2019ve really always wanted to be an actor. "
+      textSubstance: I was on the force for about a year.
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: Alright. That gives me enough information thank you.
@@ -1132,10 +1132,6 @@ MonoBehaviour:
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
       textSubstance: ' I was trying to get a more serious role. '
-    - text: {fileID: 1426787929}
-      image: {fileID: 1676334629}
-      textSubstance: But the previous director thought i was more fit as a clown
-        for some reason!
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: Funny.
@@ -1156,7 +1152,7 @@ MonoBehaviour:
       textSubstance: ...
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
-      textSubstance: Get it? im funny!
+      textSubstance: "Get it? I\u2019m funny!"
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: Alright thanks
@@ -1188,8 +1184,8 @@ MonoBehaviour:
       textSubstance: Have you made any friends on set?
     - text: {fileID: 1426787929}
       image: {fileID: 1676334629}
-      textSubstance: 'Are you kidding me? I am a professional. I see my fellow actors
-        merely as colleagues.  '
+      textSubstance: Are you kidding me? I am a professional. I refuse to waste my
+        time on such matters.
     - text: {fileID: 180289179}
       image: {fileID: 636780133}
       textSubstance: okay. thanks.
