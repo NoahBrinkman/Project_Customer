@@ -206,11 +206,51 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5712066382413476927, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: -480256299962629858, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: 402383817754076426, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
     - target: {fileID: 919132149155446097, guid: adc313334fbe50a4497daed8ba7d89b8,
         type: 3}
       propertyPath: m_Name
       value: curtainsNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5128451907852968721, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: 5200519498599677783, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: 6873008157673880786, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: 7188580565339530313, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
+    - target: {fileID: 7653054893702050390, guid: adc313334fbe50a4497daed8ba7d89b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87210a842789bc746b6dd902536d4cd5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc313334fbe50a4497daed8ba7d89b8, type: 3}
 --- !u!1 &152340756
