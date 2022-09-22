@@ -21,6 +21,6 @@ public class Tutorial : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneTransitionManager.Instance.LoadSceneTransition(3);
+        SceneTransitionManager.Instance.LoadSceneTransition(4);
     }
 }

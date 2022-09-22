@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: e3f68a2e74ee421478fd72f48e3ba3aa
   - enabled: 1
+    path: Assets/Scenes/StartText.unity
+    guid: 795ef5d9d5e949542a3f523b3dafb0a9
+  - enabled: 1
     path: Assets/Scenes/LetterScene.unity
     guid: 72f093c845e4fdc45bfc44f0d1d61e4c
   - enabled: 1

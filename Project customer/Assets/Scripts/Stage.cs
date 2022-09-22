@@ -12,7 +12,7 @@ public class Stage : MonoBehaviour
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
 
-    [SerializeField] private int endSceneBuildIndex = 4;
+    [SerializeField] private int endSceneBuildIndex = 5;
 
    
     

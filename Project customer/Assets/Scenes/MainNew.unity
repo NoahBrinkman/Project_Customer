@@ -510,7 +510,7 @@ MonoBehaviour:
   - {fileID: 1601255890}
   - {fileID: 1504366116}
   - {fileID: 322857370}
-  endSceneBuildIndex: 4
+  endSceneBuildIndex: 5
 --- !u!4 &189191972
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,12 +2864,12 @@ GameObject:
   - component: {fileID: 622239298}
   - component: {fileID: 622239297}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Clipboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &622239296
 RectTransform:
   m_ObjectHideFlags: 0
