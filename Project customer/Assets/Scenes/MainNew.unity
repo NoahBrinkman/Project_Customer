@@ -603,7 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctScene: {fileID: 11400000, guid: 33b23143c45f4d846b90790b22f2e284, type: 2}
   spots:
-  - {fileID: 0}
+  - {fileID: 1601255890}
   - {fileID: 1504366116}
   - {fileID: 322857370}
   endSceneBuildIndex: 5
