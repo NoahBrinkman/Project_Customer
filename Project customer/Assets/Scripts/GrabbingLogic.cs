@@ -14,6 +14,7 @@ public class GrabbingLogic : MonoBehaviour
     private bool actorHovered;
 
     private bool actorGrabbed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,19 +24,19 @@ public class GrabbingLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-            DragAndDrop();
-            if (hasStageSpot && !actorHovered)
-            {
-                spotlight.transform.LookAt(stageSpot.transform);
-                spotlight.turnedOn = true;
-            }
-            else if (!actorHovered)
-            {
-                spotlight.turnedOn = false;
-            }
-        
-        
+
+        DragAndDrop();
+        if (hasStageSpot && !actorHovered)
+        {
+            spotlight.transform.LookAt(stageSpot.transform);
+            spotlight.turnedOn = true;
+        }
+        else if (!actorHovered)
+        {
+            spotlight.turnedOn = false;
+        }
+
+
     }
 
     /// <summary>
@@ -73,81 +74,89 @@ public class GrabbingLogic : MonoBehaviour
                     if (book != null) book.OnClick();
                 }
 
-            //Leftclick responsible for dragging and dropping
-            if (Input.GetMouseButtonDown(0) )
-            {
-                //Dragging the Actor
-                if (hit.collider.gameObject.GetComponent<GrabbableActor>() && !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager && !actorGrabbed)
+                //Leftclick responsible for dragging and dropping
+                if (Input.GetMouseButtonDown(0))
                 {
-                    actorHovered = false;
-                    actor = hit.collider.gameObject.GetComponent<GrabbableActor>();            //Assing the Puppet object to get variables like start position
-                    selectedTransform = actor.transform;
-                    selectedTransform.gameObject.layer = 2;                                     //Set object to ignore raycast layer 
-                    actorGrabbed = true;
+                    //Dragging the Actor
+                    if (hit.collider.gameObject.GetComponent<GrabbableActor>() &&
+                        !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager && !actorGrabbed)
+                    {
+                        actorHovered = false;
+                        actor = hit.collider.gameObject
+                            .GetComponent<
+                                GrabbableActor>(); //Assing the Puppet object to get variables like start position
+                        selectedTransform = actor.transform;
+                        selectedTransform.gameObject.layer = 2; //Set object to ignore raycast layer 
+                        actorGrabbed = true;
+                    }
+                    //Placing the Actor on the StageSpot
+                    else if (hasStageSpot && selectedTransform != null)
+                    {
+                        PlaceOnThePlatform();
+                    }
+                    //Teleporting the Actor back to its start position
+                    else if (selectedTransform != null)
+                    {
+                        selectedTransform.position = actor.startPosition;
+                        selectedTransform.gameObject.layer = 0;
+                        selectedTransform = null;
+                        actorGrabbed = false;
+                        //Debug.Log("Going back to the chest");
+                    }
                 }
-                //Placing the Actor on the StageSpot
-                else if (hasStageSpot && selectedTransform != null)
-                {
-                    PlaceOnThePlatform();
-                }
-                //Teleporting the Actor back to its start position
-                else if (selectedTransform != null)
-                {
-                    selectedTransform.position = actor.startPosition;
-                    selectedTransform.gameObject.layer = 0;
-                    selectedTransform = null;
-                    actorGrabbed = false;
-                    //Debug.Log("Going back to the chest");
-                }
-            }
 
-            //Move object around after click on it
-            if (selectedTransform != null)
-            {
-                selectedTransform.position = hit.point;
-                selectedTransform.position = new Vector3(
-                    selectedTransform.position.x,
-                    selectedTransform.position.y + heightOffset,
-                    selectedTransform.position.z);
-                CheckForPlatform();
+                //Move object around after click on it
+                if (selectedTransform != null)
+                {
+                    selectedTransform.position = hit.point;
+                    selectedTransform.position = new Vector3(
+                        selectedTransform.position.x,
+                        selectedTransform.position.y + heightOffset,
+                        selectedTransform.position.z);
+                    CheckForPlatform();
+                }
             }
         }
     }
 
     /// <summary>
-    /// Method responsible for checking if Actor is above the StageSpot
-    /// </summary>
-    private void CheckForPlatform()
-    {
-        Physics.Raycast(selectedTransform.position, Vector3.down, out RaycastHit hit);
-        Debug.DrawRay(selectedTransform.position, -Vector3.up * 5f, Color.green);
-        //Debug.Log(hit.transform.name);
-        if (hit.transform.GetComponent<StageSpot>() && selectedTransform.gameObject.layer == 2)
+        /// Method responsible for checking if Actor is above the StageSpot
+        /// </summary>
+        private void CheckForPlatform()
         {
-            stageSpot = hit.transform.GetComponent<StageSpot>();
-            stageSpot.hoveredOver = true;
-            hasStageSpot = true;
+            Physics.Raycast(selectedTransform.position, Vector3.down, out RaycastHit hit);
+            Debug.DrawRay(selectedTransform.position, -Vector3.up * 5f, Color.green);
+            //Debug.Log(hit.transform.name);
+            if (hit.transform.GetComponent<StageSpot>() && selectedTransform.gameObject.layer == 2)
+            {
+                stageSpot = hit.transform.GetComponent<StageSpot>();
+                stageSpot.hoveredOver = true;
+                hasStageSpot = true;
+            }
+            else
+            {
+                hasStageSpot = false;
+            }
         }
-        else
+
+        //Place the puppet on the spot
+        private void PlaceOnThePlatform()
         {
+            selectedTransform.parent = stageSpot.transform;
+            selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
+            selectedTransform.LookAt(
+                new Vector3(stageSpot.lookAtTarget.position.x, selectedTransform.position.y,
+                    stageSpot.lookAtTarget.position.z), Vector3.up);
+            stageSpot.occupiedBy = selectedTransform.GetComponent<GrabbableActor>().actor;
+            selectedTransform.gameObject.layer =
+                0; //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
+            selectedTransform = null;
             hasStageSpot = false;
+            actorGrabbed = false;
+        }
+
+        private void TurnTheLights(RaycastHit hit)
+        {
         }
     }
 
-    //Place the puppet on the spot
-    private void PlaceOnThePlatform()
-    {
-        selectedTransform.parent = stageSpot.transform;
-        selectedTransform.localPosition = new Vector3(0, heightOffset, 0);
-        selectedTransform.LookAt(new Vector3(stageSpot.lookAtTarget.position.x, selectedTransform.position.y, stageSpot.lookAtTarget.position.z), Vector3.up);
-        stageSpot.occupiedBy = selectedTransform.GetComponent<GrabbableActor>().actor;
-        selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
-        selectedTransform = null;
-        hasStageSpot = false;
-        actorGrabbed = false;
-    }
-
-    private void TurnTheLights(RaycastHit hit)
-    {
-    }
-}
