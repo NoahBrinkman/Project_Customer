@@ -2076,16 +2076,22 @@ MonoBehaviour:
     conversation:
     - text: {fileID: 1528989088}
       image: {fileID: 912291571}
-      textSubstance: It seems word has gotten out in town about this play. Everyone
-        is trying to get in on it...
+      textSubstance: "Hi! I\u2019m the stage manager of this theater. Unfortunately,
+        I bear some bad news."
     - text: {fileID: 1528989088}
       image: {fileID: 912291571}
-      textSubstance: 'Since your cousin was directing it in secret, only they know
-        which actors were cast. Luckily, they left some notes about the play. '
+      textSubstance: Since your cousin was directing this play in secret, only she
+        knows which actors were cast. Luckily, she left some of her notes about the
+        play.
     - text: {fileID: 1528989088}
       image: {fileID: 912291571}
-      textSubstance: "You can\u2019t trust anyone, as they might be covering for
-        each other. Good luck!"
+      textSubstance: "You must figure out which ones are telling the truth about
+        their involvement in the play. When you\u2019re ready, put them on any of
+        the three pedestals."
+    - text: {fileID: 1528989088}
+      image: {fileID: 912291571}
+      textSubstance: "However, do beware! You can\u2019t trust anyone, as they might
+        be covering for each other. I wish you the best of luck, director!"
   OnConversationComplete:
     m_PersistentCalls:
       m_Calls:
