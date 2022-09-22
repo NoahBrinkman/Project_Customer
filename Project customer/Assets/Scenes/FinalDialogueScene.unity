@@ -336,26 +336,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 235497353}
-  - component: {fileID: 235497352}
+  - component: {fileID: 235497354}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DialogueManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &235497352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235497351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572df879d1c461341be0eebf09e18209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &235497353
 Transform:
   m_ObjectHideFlags: 0
@@ -371,6 +359,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235497354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235497351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79b3cf6b50311a43a2d88c7d77bee61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueByScore:
+  - Using critical thinking skills can be difficult at times. Sometimes, we let our
+    feelings make decisions for us
+  - Using critical thinking skills can be difficult at times. Sometimes, we let our
+    feelings make decisions for us
+  - You came close to finding the full truth. Sometimes, we let our feelings make
+    decisions for us
+  - "Sometimes, we let our feelings make decisions for us, but not you. You\u2019ve
+    checked your facts and used the context of the situation to find the truth. Good
+    job!"
+  text: {fileID: 494945766}
 --- !u!1 &456756345
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +669,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Always remember to check your facts
+  m_text: "Make sure you are taking context into account and don\u2019t assume all
+    claims to be fact too quickly"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -685,7 +697,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.8
+  m_fontSize: 19.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
