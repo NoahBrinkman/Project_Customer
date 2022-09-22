@@ -13,6 +13,7 @@ public class GrabbingLogic : MonoBehaviour
     private bool hasStageSpot;
     private bool actorHovered;
 
+    private bool actorGrabbed;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,7 @@ public class GrabbingLogic : MonoBehaviour
             }
 
             //Righclick responsible for interaction with objects
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && !actorGrabbed)
             {
                 if (hit.collider.gameObject.GetComponent<GrabbableActor>())
                 {
@@ -72,13 +73,17 @@ public class GrabbingLogic : MonoBehaviour
                     if (book != null) book.OnClick();
                 }
 
+            //Leftclick responsible for dragging and dropping
+            if (Input.GetMouseButtonDown(0) )
+            {
                 //Dragging the Actor
-                if (hit.collider.gameObject.GetComponent<GrabbableActor>() && !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager)
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>() && !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager && !actorGrabbed)
                 {
                     actorHovered = false;
                     actor = hit.collider.gameObject.GetComponent<GrabbableActor>();            //Assing the Puppet object to get variables like start position
                     selectedTransform = actor.transform;
                     selectedTransform.gameObject.layer = 2;                                     //Set object to ignore raycast layer 
+                    actorGrabbed = true;
                 }
                 //Placing the Actor on the StageSpot
                 else if (hasStageSpot && selectedTransform != null)
@@ -91,6 +96,7 @@ public class GrabbingLogic : MonoBehaviour
                     selectedTransform.position = actor.startPosition;
                     selectedTransform.gameObject.layer = 0;
                     selectedTransform = null;
+                    actorGrabbed = false;
                     //Debug.Log("Going back to the chest");
                 }
             }
@@ -138,6 +144,7 @@ public class GrabbingLogic : MonoBehaviour
         selectedTransform.gameObject.layer = 0;                                         //Used if we want to move around actors after they've been already placed on the spot (for example: if you placed the actor on the spot 15 by accident and you want it on spot 14)
         selectedTransform = null;
         hasStageSpot = false;
+        actorGrabbed = false;
     }
 
     private void TurnTheLights(RaycastHit hit)
