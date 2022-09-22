@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     
     public void NextDialogue()
     {
+        Debug.Log("Next dialogue");
         if (index + 1 < activeConversation.Count)
         {
             if (index >= 0)

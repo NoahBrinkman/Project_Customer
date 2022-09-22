@@ -22,16 +22,19 @@ public class GrabbingLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DragAndDrop();
-        if (hasStageSpot && !actorHovered)
-        {
-            spotlight.transform.LookAt(stageSpot.transform);
-            spotlight.turnedOn = true;
-        }
-        else if (!actorHovered)
-        {
-            spotlight.turnedOn = false;
-        }
+        
+            DragAndDrop();
+            if (hasStageSpot && !actorHovered)
+            {
+                spotlight.transform.LookAt(stageSpot.transform);
+                spotlight.turnedOn = true;
+            }
+            else if (!actorHovered)
+            {
+                spotlight.turnedOn = false;
+            }
+        
+        
     }
 
     /// <summary>
@@ -58,18 +61,19 @@ public class GrabbingLogic : MonoBehaviour
                 {
                     InterviewManager.Instance.GoToInterviewScene(hit.collider.GetComponent<GrabbableActor>().actor);
                 }
+            }
 
+            //Leftclick responsible for interaction
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Opening the book
                 if (hit.collider.GetComponent<Book>() is Book book)
                 {
                     if (book != null) book.OnClick();
                 }
-            }
 
-            //Leftclick responsible for dragging and dropping
-            if (Input.GetMouseButtonDown(0))
-            {
                 //Dragging the Actor
-                if (hit.collider.gameObject.GetComponent<GrabbableActor>())
+                if (hit.collider.gameObject.GetComponent<GrabbableActor>() && !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager)
                 {
                     actorHovered = false;
                     actor = hit.collider.gameObject.GetComponent<GrabbableActor>();            //Assing the Puppet object to get variables like start position
