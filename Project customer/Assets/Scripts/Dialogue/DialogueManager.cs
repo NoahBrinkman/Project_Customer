@@ -50,6 +50,7 @@ public class DialogueManager : MonoBehaviour
             {
                 activeConversation[index].DisableText();
             }
+            AudioManager.Instance.PlaySound("Confirm2");
             index++;
             activeConversation[index].EnableText();
         }

@@ -68,8 +68,12 @@ public class SceneTransitionManager : MonoBehaviour
     private IEnumerator LoadSceneAsync(int buildIndex, bool useStandardTransition, float waitBeforeFullTransition = 0)
     {
         //Start animation
-        if(useStandardTransition)
+        if (useStandardTransition)
+        {
             transitionAnimator.SetBool("startAnimation",true);
+            AudioManager.Instance.PlaySound("Curtain");
+        }
+           
         else
             transitionAnimator.SetBool("startAnimationVariant",true);
         yield return new WaitForSeconds(sceneTransitionTimePerHalf);
@@ -80,8 +84,11 @@ public class SceneTransitionManager : MonoBehaviour
             yield return null;
         }
         //start other animation
-        if(useStandardTransition)
+        if (useStandardTransition)
+        {
             transitionAnimator.SetBool("startAnimation",false);
+            AudioManager.Instance.PlaySound("Curtain");
+        }
         else
             transitionAnimator.SetBool("startAnimationVariant",false);
         yield return new WaitForSeconds(sceneTransitionTimePerHalf);

@@ -138,7 +138,7 @@ public class GrabbingLogic : MonoBehaviour
     private void PlaceOnThePlatform()
     {
         if(stageSpot.occupiedBy != Actor.empty) return;
-        
+        AudioManager.Instance.PlaySound("Confirm");
         selectedTransform.parent = stageSpot.transform;
         selectedTransform.localPosition = new Vector3(0, 0.45f, 0);
         selectedTransform.LookAt(new Vector3(stageSpot.lookAtTarget.position.x, selectedTransform.position.y, stageSpot.lookAtTarget.position.z), Vector3.up);

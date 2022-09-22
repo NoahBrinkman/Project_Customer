@@ -17,7 +17,7 @@ public class Stage : MonoBehaviour
     private void Start()
     {
         SceneTransitionManager.Instance.HandleTutorial();
-        
+        AudioManager.Instance.PlayMusic("Middle");
     }
     public void FillSpots()
     {
@@ -61,9 +61,9 @@ public class Stage : MonoBehaviour
                 }
             }
         }
-
+        AudioManager.Instance.PlaySound("DrumRoll");
         SelectionPasser.Instance.selection = selection;
-        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex, true, 1);
+        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex, true, 3.5f);
     }
     
 
