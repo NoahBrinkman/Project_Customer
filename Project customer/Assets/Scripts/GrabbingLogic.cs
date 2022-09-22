@@ -27,6 +27,7 @@ public class GrabbingLogic : MonoBehaviour
             DragAndDrop();
             if (hasStageSpot && !actorHovered)
             {
+
                 spotlight.transform.LookAt(stageSpot.transform);
                 spotlight.turnedOn = true;
             }
@@ -50,7 +51,9 @@ public class GrabbingLogic : MonoBehaviour
             if (hit.collider.gameObject.GetComponent<GrabbableActor>())
             {
                 actorHovered = true;
-                spotlight.transform.LookAt(hit.transform);
+                if(!actorGrabbed)
+                    spotlight.transform.LookAt(hit.transform);
+                
                 spotlight.turnedOn = true;
                 //Debug.Log("Puppet found");
             }
@@ -134,6 +137,8 @@ public class GrabbingLogic : MonoBehaviour
     //Place the puppet on the spot
     private void PlaceOnThePlatform()
     {
+        if(stageSpot.occupiedBy != Actor.empty) return;
+        
         selectedTransform.parent = stageSpot.transform;
         selectedTransform.localPosition = new Vector3(0, 0.45f, 0);
         selectedTransform.LookAt(new Vector3(stageSpot.lookAtTarget.position.x, selectedTransform.position.y, stageSpot.lookAtTarget.position.z), Vector3.up);
