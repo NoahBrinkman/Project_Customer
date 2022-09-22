@@ -107,7 +107,7 @@ public class CameraSwitich : MonoBehaviour
     }
     private void MoveToFinalScene()
     {
-        SceneTransitionManager.Instance.LoadSceneTransition(6);
+        SceneTransitionManager.Instance.LoadSceneTransition(7);
         
     }
     public void NextSpot()
