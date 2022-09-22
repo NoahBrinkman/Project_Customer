@@ -24,7 +24,7 @@ public class InterviewSceneHandler : MonoBehaviour
 
     private void OnConversationComplete()
     {
-        SceneTransitionManager.Instance.LoadSceneTransition(3);
+        SceneTransitionManager.Instance.LoadSceneTransition(4);
     }
     
 }

@@ -11,6 +11,9 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private float sceneTransitionTimePerHalf = 0.5f;
     [SerializeField] private Animator transitionAnimator;
     private bool intransit = false;
+
+    private bool tutorialShown = false;
+    
     private void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
@@ -24,8 +27,25 @@ public class SceneTransitionManager : MonoBehaviour
             Instance = this; 
             DontDestroyOnLoad(this);
         } 
+
     }
 
+    public void HandleTutorial()
+    {
+        GameObject tutorialImage = GameObject.FindWithTag("Tutorial");
+        if (tutorialImage != null)
+        {
+            if (tutorialShown)
+            {
+                tutorialImage.SetActive(false);
+            }
+            else
+            {
+                tutorialShown = true;
+            }
+        }
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

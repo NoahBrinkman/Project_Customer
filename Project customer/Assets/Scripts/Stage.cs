@@ -14,8 +14,15 @@ public class Stage : MonoBehaviour
 
     [SerializeField] private int endSceneBuildIndex = 5;
 
-   
-    
+    private void Start()
+    {
+        SceneTransitionManager.Instance.HandleTutorial();
+        
+    }
+    public void FillSpots()
+    {
+        
+    }
     public void OnDirectButtonClicked()
     {
         List<Actor> actorsInField = new List<Actor>();
