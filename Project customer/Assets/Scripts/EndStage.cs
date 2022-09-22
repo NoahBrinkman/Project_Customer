@@ -46,6 +46,7 @@ public class EndStage : MonoBehaviour
         {
             spots[i].Deactivate();
         }
+        
         switcher.NextSpot();
         switcher.OnCameraSwitched.AddListener(ActivateNewDialogue);
         
@@ -53,7 +54,7 @@ public class EndStage : MonoBehaviour
 
     private void ActivateNewDialogue()
     {
-
+        AudioManager.Instance.PlaySound(spots[index].correct ? "Cheers" + (index+1).ToString() : "Boos"+ (index+1).ToString());
         spots[index].Activate();
     }
 

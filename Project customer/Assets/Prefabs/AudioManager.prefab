@@ -154,6 +154,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b5d6916c453832143a2975892dc2471f, type: 3}
   - name: OpenLetter
     clip: {fileID: 8300000, guid: 9a12bd53327e819459bd3d91ec09084a, type: 3}
+  - name: Cheers1
+    clip: {fileID: 8300000, guid: d20f1a23834a9e546951c4d7042d3d4f, type: 3}
+  - name: Cheers2
+    clip: {fileID: 8300000, guid: ed6782aa91a82854ea7045ea1a6b384e, type: 3}
+  - name: Cheers3
+    clip: {fileID: 8300000, guid: 902f0f832c66c7a48921a568fa802c6b, type: 3}
+  - name: Boos1
+    clip: {fileID: 8300000, guid: 080c9e340afb57a4ea463635ae57aac9, type: 3}
+  - name: Boos2
+    clip: {fileID: 8300000, guid: fedc807c1a5dd1b42a2ee5d712fddeda, type: 3}
+  - name: Boos3
+    clip: {fileID: 8300000, guid: b5de54292835296468410092719da090, type: 3}
   musics:
   - name: Opening
     clip: {fileID: 8300000, guid: 197b6b635be11504489a9c45f0260f74, type: 3}
