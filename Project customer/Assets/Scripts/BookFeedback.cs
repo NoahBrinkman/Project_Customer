@@ -30,6 +30,7 @@ public class BookFeedback : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Book>())
             {
+                Debug.Log("Book hovered");
                 spotlight.turnedOn = true;
             }
             else

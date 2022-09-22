@@ -12,10 +12,17 @@ public class Stage : MonoBehaviour
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
 
-    [SerializeField] private int endSceneBuildIndex = 3;
+    [SerializeField] private int endSceneBuildIndex = 5;
 
-   
-    
+    private void Start()
+    {
+        SceneTransitionManager.Instance.HandleTutorial();
+        
+    }
+    public void FillSpots()
+    {
+        
+    }
     public void OnDirectButtonClicked()
     {
         List<Actor> actorsInField = new List<Actor>();
@@ -24,6 +31,10 @@ public class Stage : MonoBehaviour
             actorsInField.Add(spots[i].occupiedBy);
         }
 
+        if (actorsInField.Any(a => a == Actor.empty || a == Actor.manager))
+        {
+            return;
+        }
         List<ActorSelection> selection = new List<ActorSelection>();
         
         if (actorsInField.All(x => correctScene.actorScene.actors.Contains(x)))
@@ -52,7 +63,7 @@ public class Stage : MonoBehaviour
         }
 
         SelectionPasser.Instance.selection = selection;
-        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex);
+        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex, true, 1);
     }
     
 

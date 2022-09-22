@@ -15,7 +15,7 @@ public class LettersceneHandler : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneTransitionManager.Instance.LoadSceneTransition(2,false);
+            SceneTransitionManager.Instance.LoadSceneTransition(3,false);
         }
     }
 }

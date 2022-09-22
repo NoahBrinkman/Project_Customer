@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2}
+public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2,manager}
 
 [Serializable]
 public class ActorScene
