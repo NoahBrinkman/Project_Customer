@@ -24,7 +24,6 @@ public class GrabbingLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         DragAndDrop();
         if (hasStageSpot && !actorHovered)
         {
@@ -69,7 +68,7 @@ public class GrabbingLogic : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //Opening the book
-                if (hit.collider.GetComponent<Book>() is Book book)
+                if (hit.collider.GetComponent<Book>() is Book book && !actorGrabbed)
                 {
                     if (book != null) book.OnClick();
                 }
@@ -79,12 +78,10 @@ public class GrabbingLogic : MonoBehaviour
                 {
                     //Dragging the Actor
                     if (hit.collider.gameObject.GetComponent<GrabbableActor>() &&
-                        !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager && !actorGrabbed)
+                        !hit.collider.gameObject.GetComponent<GrabbableActor>().isManager)
                     {
                         actorHovered = false;
-                        actor = hit.collider.gameObject
-                            .GetComponent<
-                                GrabbableActor>(); //Assing the Puppet object to get variables like start position
+                        actor = hit.collider.gameObject.GetComponent<GrabbableActor>(); //Assing the Puppet object to get variables like start position
                         selectedTransform = actor.transform;
                         selectedTransform.gameObject.layer = 2; //Set object to ignore raycast layer 
                         actorGrabbed = true;
@@ -101,7 +98,7 @@ public class GrabbingLogic : MonoBehaviour
                         selectedTransform.gameObject.layer = 0;
                         selectedTransform = null;
                         actorGrabbed = false;
-                        //Debug.Log("Going back to the chest");
+                        Debug.Log("Going back to the chest");
                     }
                 }
 
@@ -159,4 +156,3 @@ public class GrabbingLogic : MonoBehaviour
         {
         }
     }
-
