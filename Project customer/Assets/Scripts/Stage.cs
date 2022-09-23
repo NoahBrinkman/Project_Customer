@@ -7,45 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField] private List<StageScene> scenes = new List<StageScene>();
+    [SerializeField] private StageScene correctScene;
 
     [SerializeField] private List<StageSpot> spots = new List<StageSpot>();
 
-    [SerializeField] private int correctSceneBuildIndex;
-    [SerializeField] private int incorrectSceneBuildIndex;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private int endSceneBuildIndex = 5;
+
+    private void Start()
+    {
+        SceneTransitionManager.Instance.HandleTutorial();
+        AudioManager.Instance.PlayMusic("Middle");
+    }
+    public void FillSpots()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-
     public void OnDirectButtonClicked()
-    {
-        StageScene scene = AnyScenesMatch();
-        if (scene != null)
-        {
-            if (scene.correct)
-            {
-                Debug.Log("correct");
-                SceneManager.LoadScene(correctSceneBuildIndex);
-            }
-            else
-            {
-                Debug.Log("Incorrect");
-                SceneManager.LoadScene(incorrectSceneBuildIndex);
-            }
-        }
-    }
-    
-    private StageScene AnyScenesMatch()
     {
         List<Actor> actorsInField = new List<Actor>();
         for (int i = 0; i < spots.Count; i++)
@@ -53,16 +31,42 @@ public class Stage : MonoBehaviour
             actorsInField.Add(spots[i].occupiedBy);
         }
 
-        for (int j = 0; j < scenes.Count; j++)
+        if (actorsInField.Any(a => a == Actor.empty || a == Actor.manager))
         {
-            
-            if (scenes[j].actorScene.actors.All(actorsInField.Contains))
+            return;
+        }
+        List<ActorSelection> selection = new List<ActorSelection>();
+        
+        if (actorsInField.All(x => correctScene.actorScene.actors.Contains(x)))
+        {
+            Debug.Log("all correct");
+            for (int i = 0; i < actorsInField.Count; i++)
             {
-                return scenes[j];
+                selection.Add(new ActorSelection(actorsInField[i],true));
             }
         }
-        return null;
+        else
+        {
+            for (int i = 0; i < actorsInField.Count; i++)
+            {
+                if (correctScene.actorScene.actors.Contains(actorsInField[i]))
+                {
+                    Debug.Log($"Index of actors in scene: {i} Matches");
+                    selection.Add(new ActorSelection(actorsInField[i],true));
+                }
+                else
+                {
+                    selection.Add( new ActorSelection(actorsInField[i], false));
+                    Debug.Log("Wrong");
+                }
+            }
+        }
+        AudioManager.Instance.PlaySound("DrumRoll");
+        SelectionPasser.Instance.selection = selection;
+        SceneTransitionManager.Instance.LoadSceneTransition(endSceneBuildIndex, true, 3.5f);
     }
+    
+
     
     private void OnDrawGizmos()
     {
@@ -70,4 +74,18 @@ public class Stage : MonoBehaviour
         Gizmos.DrawLine(new Vector3(transform.forward.x, transform.forward.y + .5f, transform.forward.z), new Vector3(transform.forward.x - .2f, transform.forward.y + .5f, transform.forward.z - .2f));
         Gizmos.DrawLine(new Vector3(transform.forward.x, transform.forward.y + .5f, transform.forward.z), new Vector3(transform.forward.x + .2f, transform.forward.y + .5f, transform.forward.z - .2f));
     }
+}
+
+public class ActorSelection
+{
+
+    public Actor actor;
+    public bool correct;
+    
+    public ActorSelection(Actor actor, bool correct)
+    {
+        this.actor = actor;
+        this.correct = correct;
+    }
+    
 }

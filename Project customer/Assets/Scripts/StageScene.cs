@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public enum Actor {empty, person, photographer, clown,cop,childOne, childTwo,childThree, personLocked, photographerLocked, childOneLocked, childTwoLocked,childThreeLocked}
+public enum Actor {empty,cop1,cop2,clown1,clown2,mayor1,mayor2,manager}
 
 [Serializable]
 public class ActorScene
@@ -28,12 +24,9 @@ public class ActorScene
 [CreateAssetMenu(fileName = "StageScene", menuName = "ScriptableObjects/StageScene", order = 1)]
 public class StageScene : ScriptableObject
 {
-    public bool correct = false;
-    public string prompt = String.Empty;
-    public string outcome = String.Empty;
     public int rows = 4;
     public int columns = 4;
-    public ActorScene actorScene = new ActorScene();
+    public ActorScene actorScene ;
 
 
     public void Initialize()
